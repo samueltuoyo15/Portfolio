@@ -254,43 +254,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Selected Case Studies Banner (Mockup) */}
-      <section className="w-full max-w-5xl px-4 mb-32">
-        <div className="flex items-center gap-3 mb-6">
-          <FolderOpen className="w-8 h-8 text-yellow-500" />
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-900">Selected Case Studies</h2>
-        </div>
-        <p className="text-gray-600 max-w-2xl mb-10 text-lg">
-          A few handpicked projects where I share how I approach problems, design architecture, and implement high-performance solutions.
-        </p>
-
-        <div className="w-full bg-gradient-to-r from-orange-400 to-red-500 rounded-[2rem] p-6 md:p-12 relative overflow-hidden h-[500px]">
-          {/* Mockup Container */}
-          <div className="absolute top-10 left-10 md:left-24 right-10 md:right-24 bottom-0 bg-white shadow-2xl rounded-t-3xl p-6 md:p-10 flex flex-col items-center">
-            <div className="w-full h-8 bg-gray-100 rounded-full mb-6 flex items-center px-4 gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div className="w-3 h-3 rounded-full bg-green-400"></div>
-            </div>
-            <div className="w-full h-full bg-gray-50 rounded-xl p-8 flex flex-col gap-6 overflow-hidden">
-              <div className="flex items-center justify-between">
-                <div className="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-bold">Featured</div>
-                <span className="text-gray-400 text-sm">Motion Pipe • 2025</span>
-              </div>
-              <h3 className="font-serif text-4xl text-gray-900">Automating Content Orchestration</h3>
-              <p className="text-gray-600">
-                Engineered a high-concurrency Golang engine to automate marketing lifecycles.
-                Reduced manual effort by 100% and increased output by 10x using AI-driven asset generation.
-              </p>
-              <div className="mt-auto flex gap-4">
-                <div className="h-24 w-1/3 bg-gray-200 rounded-lg"></div>
-                <div className="h-24 w-1/3 bg-gray-200 rounded-lg delay-75"></div>
-                <div className="h-24 w-1/3 bg-gray-200 rounded-lg delay-150"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Process Section */}
       <section className="w-full max-w-4xl px-4 mb-32">
