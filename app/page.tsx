@@ -62,10 +62,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center pb-20 overflow-x-hidden font-sans">
-      {/* Navbar */}
       <nav className="w-full max-w-6xl px-0 py-6 flex justify-between items-center z-10">
         <div className="flex items-center gap-3">
-          {/* Logo Avatar */}
           <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200 relative">
             <Image
               src="/avatar.jpg"
@@ -82,7 +80,7 @@ export default function Home() {
             className="hidden md:flex items-center gap-2 text-sm font-medium hover:opacity-70 transition border border-gray-200 px-4 py-2 rounded-full"
             aria-label="View Resume"
           >
-            📄 VIEW RESUME
+            <FileText className="w-4 h-4" /> VIEW RESUME
           </button>
 
           <div className="flex gap-2">
@@ -93,7 +91,7 @@ export default function Home() {
               aria-label="LinkedIn"
               className="w-10 h-10 bg-[#0077b5] text-white rounded-lg flex items-center justify-center hover:scale-105 transition"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+              <Linkedin className="w-5 h-5 fill-current" />
             </Link>
             <Link
               href="https://twitter.com/yourusername"
@@ -102,7 +100,7 @@ export default function Home() {
               aria-label="Twitter"
               className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:scale-105 transition"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+              <Twitter className="w-4 h-4 fill-current" />
             </Link>
             <Link
               href="https://medium.com/@yourusername"
@@ -111,13 +109,12 @@ export default function Home() {
               aria-label="Medium"
               className="w-10 h-10 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:scale-105 transition"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" /></svg>
+              <PenTool className="w-5 h-5" />
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
       <main className="w-full max-w-2xl px-4 mt-6 mb-16 relative">
         <div className="absolute -top-32 left-12 w-0.5 h-32 bg-gray-300 z-0"></div>
         <div className="absolute -top-32 right-12 w-0.5 h-32 bg-gray-300 z-0"></div>
@@ -221,33 +218,37 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {otherProjects.map((project, i) => (
-            <div key={i} className={`group relative rounded-3xl overflow-hidden shadow-lg h-80 ${project.color} text-white transition hover:-translate-y-1`}>
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
-              <div className="p-8 flex flex-col h-full justify-between relative z-10">
+            <div key={i} className={`group relative rounded-3xl overflow-hidden shadow-lg h-96 bg-white border border-gray-100 transition hover:-translate-y-1`}>
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src={project.title === "Happr" ? "/happr.png" : "/motion-pipe.png"}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-black/10"></div>
+              </div>
+
+              <div className={`p-6 flex flex-col justify-between h-48 ${project.color} text-white`}>
                 <div>
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-2xl font-bold font-serif">{project.title}</h3>
-                    <div className="p-2 bg-white/10 rounded-full backdrop-blur-md">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    <h3 className="text-xl font-bold font-serif">{project.title}</h3>
+                    <div className="p-1.5 bg-white/10 rounded-full backdrop-blur-md">
+                      <Cpu className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                  <p className="text-white/80 font-medium mb-1">{project.role}</p>
-                  <p className="text-white/60 text-sm max-w-xs">{project.desc}</p>
+                  <p className="text-white/80 font-medium text-sm mb-1">{project.role}</p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
+                  <p className="text-white/70 text-xs line-clamp-2">{project.desc}</p>
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.map(t => (
-                      <span key={t} className="px-3 py-1 bg-white/20 backdrop-blur rounded-full text-xs font-semibold">{t}</span>
+                    {project.tech.slice(0, 3).map(t => (
+                      <span key={t} className="px-2 py-0.5 bg-white/20 backdrop-blur rounded-full text-[10px] font-semibold">{t}</span>
                     ))}
                   </div>
-                  <button className="w-full py-3 bg-white text-black font-bold rounded-xl opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0">
-                    View Project
-                  </button>
                 </div>
               </div>
-              {/* Abstract Circle decoration */}
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
             </div>
           ))}
         </div>
@@ -335,7 +336,7 @@ export default function Home() {
               <div className="bg-white p-3 shadow-md -rotate-3 border border-gray-100">
                 <div className="relative aspect-[3/4] bg-gray-200 overflow-hidden">
                   <Image
-                    src="https://api.dicebear.com/9.x/avataaars/svg?seed=Samuel&clothing=blazerAndShirt&facialHair=beardMedium&top=shortCurly"
+                    src="/avatar.jpg"
                     alt="Samuel Photo"
                     fill
                     className="object-cover"
