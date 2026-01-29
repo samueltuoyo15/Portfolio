@@ -1,25 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { SocialIcon } from 'react-social-icons'
 import {
   FileText,
-  Linkedin,
-  Twitter,
-  PenTool,
   FolderOpen,
   GitMerge,
   Star,
   User,
-  CheckCircle2,
   Rocket,
   Cpu,
   ShieldCheck,
   Server,
   Hand,
   Briefcase,
-  Code2
+  Code2,
 } from "lucide-react";
 
 export default function Home() {
@@ -38,7 +34,7 @@ export default function Home() {
       role: "System Architect",
       desc: "AI-Driven Marketing Orchestration SaaS",
       tech: ["Golang", "AI/ML", "Concurrency"],
-      color: "bg-[#4B0082]",
+      color: "bg-[#2563EB]",
     },
     {
       title: "Nexus Botix",
@@ -52,8 +48,15 @@ export default function Home() {
       role: "Co-Architect",
       desc: "Fintech Creator Payout Infrastructure",
       tech: ["Paystack", "BullMQ", "Prisma"],
-      color: "bg-[#064E3B]",
-    },
+      color: "bg-[#7C3AED]",
+    },];
+
+  const creations = [
+    { id: 1, image: "/motion-pipe.png" },
+    { id: 2, image: "/motion-pipe.png" },
+    { id: 3, image: "/motion-pipe.png" },
+    { id: 4, image: "/motion-pipe.png" },
+    { id: 5, image: "/motion-pipe.png" },
   ];
 
   // Split projects
@@ -77,40 +80,32 @@ export default function Home() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => setIsResumeOpen(true)}
-            className="hidden md:flex items-center gap-2 text-sm font-medium hover:opacity-70 transition border border-gray-200 px-4 py-2 rounded-full"
+            className="flex items-center gap-2 text-sm font-medium hover:opacity-70 transition border border-gray-200 px-4 py-2 rounded-full"
             aria-label="View Resume"
           >
             <FileText className="w-4 h-4" /> VIEW RESUME
           </button>
 
           <div className="flex gap-2">
-            <Link
-              href="https://linkedin.com/in/samuel-tuoyo-8568b62b6"
+            <SocialIcon
+              url="https://linkedin.com/in/samuel-tuoyo-8568b62b6"
               target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="w-10 h-10 bg-[#0077b5] text-white rounded-lg flex items-center justify-center hover:scale-105 transition"
-            >
-              <Linkedin className="w-5 h-5 fill-current" />
-            </Link>
-            <Link
-              href="https://twitter.com/yourusername"
+              style={{ height: 40, width: 40 }}
+              className="hover:scale-110 transition-transform"
+            />
+            <SocialIcon
+              url="https://x.com/TuoyoS26091"
+              network="x"
               target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:scale-105 transition"
-            >
-              <Twitter className="w-4 h-4 fill-current" />
-            </Link>
-            <Link
-              href="https://medium.com/@yourusername"
+              style={{ height: 40, width: 40 }}
+              className="hover:scale-110 transition-transform"
+            />
+            <SocialIcon
+              url="https://medium.com/@samueltuoyo9082"
               target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Medium"
-              className="w-10 h-10 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:scale-105 transition"
-            >
-              <PenTool className="w-5 h-5" />
-            </Link>
+              style={{ height: 40, width: 40 }}
+              className="hover:scale-110 transition-transform"
+            />
           </div>
         </div>
       </nav>
@@ -168,11 +163,49 @@ export default function Home() {
         </div>
       </main>
 
+      {/* Snapshot of my creations */}
+      <section className="w-full mb-24 overflow-hidden">
+        <div className="w-full max-w-6xl mx-auto px-4 mb-12 pt-8">
+          <div className="relative inline-block">
+            <h2 className="text-4xl md:text-6xl font-handwriting text-gray-400 -rotate-2">
+              Snapshot of my creations
+              {/* Custom Arrow */}
+              <svg className="absolute -bottom-10 -right-20 w-24 h-24 text-gray-300 rotate-12 hidden md:block" viewBox="0 0 200 100" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M20 20 C 80 10, 120 40, 100 80" strokeLinecap="round" className="animate-pulse" />
+                <path d="M90 70 L 100 80 L 115 75" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </h2>
+          </div>
+        </div>
+
+        <div className="w-full overflow-x-auto pb-12 hide-scrollbar px-4 md:px-0 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+          <div className="flex gap-6 md:gap-8 px-4 md:px-20 w-max mx-auto">
+            {creations.map((item, idx) => (
+              <div
+                key={idx}
+                className="relative w-[280px] md:w-[320px] h-[550px] md:h-[650px] flex-shrink-0 rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] bg-gray-100 border-[8px] border-white group"
+              >
+                <div className="absolute inset-0 bg-gray-200 animate-pulse group-hover:animate-none"></div>
+                <Image
+                  src={item.image}
+                  alt={`Creation ${item.id}`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Overlay reflection effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Selected Work Experience */}
       <section className="w-full max-w-6xl px-4 mb-24">
-        <div className="flex items-center gap-4 mb-8">
-          <h2 className="text-2xl font-handwriting text-gray-500 -rotate-2">Selected Work Experience</h2>
-          <Briefcase className="w-8 h-8 text-gray-400 rotate-12" />
+        <div className="flex items-center gap-4 mb-12">
+          <h2 className="text-4xl md:text-6xl font-handwriting text-gray-500 -rotate-2">Selected Work Experience</h2>
+          <Briefcase className="w-8 h-8 md:w-12 md:h-12 text-gray-400 rotate-12" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -211,15 +244,14 @@ export default function Home() {
 
       {/* Selected Personal Projects */}
       <section className="w-full max-w-6xl px-4 mb-24">
-        <div className="flex items-center gap-4 mb-8">
-          <h2 className="text-2xl font-handwriting text-gray-500 -rotate-2">Technical Innovations</h2>
-          <PenTool className="w-8 h-8 text-gray-400 rotate-12" />
+        <div className="flex items-center gap-4 mb-12">
+          <h2 className="text-4xl md:text-6xl font-handwriting text-gray-500 -rotate-2">Technical Innovations</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {otherProjects.map((project, i) => (
-            <div key={i} className={`group relative rounded-3xl overflow-hidden shadow-lg h-96 bg-white border border-gray-100 transition hover:-translate-y-1`}>
-              <div className="h-48 relative overflow-hidden">
+            <div key={i} className={`group relative rounded-3xl overflow-hidden shadow-lg h-[30rem] bg-white border border-gray-100 transition hover:-translate-y-1`}>
+              <div className="h-64 relative overflow-hidden">
                 <Image
                   src={project.title === "Happr" ? "/happr.png" : "/motion-pipe.png"}
                   alt={project.title}
@@ -229,7 +261,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/10"></div>
               </div>
 
-              <div className={`p-6 flex flex-col justify-between h-48 ${project.color} text-white`}>
+              <div className={`p-6 flex flex-col justify-between h-56 ${project.color} text-white`}>
                 <div>
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-xl font-bold font-serif">{project.title}</h3>
@@ -331,6 +363,15 @@ export default function Home() {
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/80 -rotate-2 shadow-sm"></div>
           <div className="absolute top-10 -right-4 w-8 h-24 bg-yellow-200/80 rotate-3 shadow-sm"></div>
 
+          {/* Laptop Polaroid */}
+          <div className="absolute -top-12 -right-2 md:-right-12 w-52 h-52 bg-white p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 hidden md:block transition hover:scale-110 hover:rotate-0 duration-300">
+            <div className="relative w-full h-full bg-gray-800 overflow-hidden filter sepia-[.2]">
+              <Image src="/laptop.jpg" alt="My Workstation" fill className="object-cover" />
+            </div>
+            {/* Tape */}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-6 h-16 bg-[#eecd86] opacity-90 shadow-sm transform -rotate-2"></div>
+          </div>
+
           <div className="flex flex-col md:flex-row gap-8">
             <div className="w-full md:w-1/3">
               <div className="bg-white p-3 shadow-md -rotate-3 border border-gray-100">
@@ -348,22 +389,42 @@ export default function Home() {
 
             <div className="w-full md:w-2/3">
               <p className="text-gray-700 leading-loose font-serif text-lg mb-6">
-                Hi, My name is <strong className="text-black">Samuel Oritseweyinmi Tuoyo</strong>. I'm a Backend Software Engineer with years of experience crafting high-performance digital systems.
+                Hi, My name is <strong className="text-black">Samuel Tuoyo</strong>. I'm a Backend Software Engineer with years of experience crafting high-performance digital systems.
               </p>
               <p className="text-gray-600 mb-6 font-sans">
-                I focus on creating seamless APIs that solve real problems. When I'm not coding, you'll catch me exploring new tech, optimizing database queries, or enjoying quality time with family.
+                I focus on creating seamless APIs that solve real problems. When I'm not coding, you'll catch me exploring new tech, optimizing database queries.
               </p>
 
-              {/* Lined paper skills */}
-              <div className="bg-white border border-gray-200 p-6 shadow-inner relative mt-8" style={{ backgroundImage: "linear-gradient(#e5e7eb 1px, transparent 1px)", backgroundSize: "100% 2rem" }}>
-                <h4 className="font-bold mb-4 bg-white/80 inline-block px-2">My Skillsets include:</h4>
-                <ul className="space-y-4 pt-1 font-handwriting text-blue-700 text-lg">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> NestJS & Node.js Architecture</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> Microservices & RBAC Systems</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> Payment Orchestration (Paystack)</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> AWS & Docker Deployment</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> Redis & Real-time Sync</li>
-                </ul>
+              {/* Realistic Paper Skills */}
+              <div className="relative mt-12 mb-8 mx-auto max-w-lg transform rotate-1 transition hover:rotate-0 duration-300">
+                {/* Tapes */}
+                <div className="absolute -top-3 -left-3 w-12 h-6 bg-[#eecd86]/90 shadow-sm transform -rotate-45 z-20"></div>
+                <div className="absolute -top-3 -right-3 w-12 h-6 bg-[#eecd86]/90 shadow-sm transform rotate-45 z-20"></div>
+                <div className="absolute -bottom-3 -left-3 w-12 h-6 bg-[#eecd86]/90 shadow-sm transform rotate-45 z-20"></div>
+                <div className="absolute -bottom-3 -right-3 w-12 h-6 bg-[#eecd86]/90 shadow-sm transform -rotate-45 z-20"></div>
+
+                {/* Paper Content */}
+                <div
+                  className="bg-[#fdfdfd] text-gray-800 p-8 shadow-xl relative z-10 font-handwriting text-2xl leading-relaxed"
+                  style={{
+                    backgroundImage: "repeating-linear-gradient(transparent, transparent 31px, #94a3b8 32px)",
+                    backgroundAttachment: "local"
+                  }}
+                >
+                  <h4 className="font-sans font-bold text-gray-900 text-lg mb-6 -mt-2">My Skillsets include:</h4>
+
+                  <ul className="space-y-1 list-none ml-2">
+                    <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> NestJS & Node.js Architecture</li>
+                    <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> Microservices & RBAC Systems</li>
+                    <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> Payment Orchestration (Paystack)</li>
+                    <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> AWS & Docker Deployment</li>
+                    <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> Redis & Real-time Sync</li>
+                  </ul>
+
+                  <div className="mt-8 pt-4 border-t border-dashed border-gray-300/50 text-gray-500 text-xl">
+                    PS: check my <button onClick={() => setIsResumeOpen(true)} className="underline decoration-wavy decoration-red-400 text-gray-800 hover:text-red-500 font-bold cursor-pointer">resume</button> for more info.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
