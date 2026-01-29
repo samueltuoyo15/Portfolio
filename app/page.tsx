@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { SocialIcon } from 'react-social-icons'
 import {
   FileText,
@@ -52,12 +52,46 @@ export default function Home() {
     },];
 
   const creations = [
-    { id: 1, image: "/motion-pipe.png" },
-    { id: 2, image: "/motion-pipe.png" },
-    { id: 3, image: "/motion-pipe.png" },
-    { id: 4, image: "/motion-pipe.png" },
-    { id: 5, image: "/motion-pipe.png" },
+    "/Screenshot (245).png",
+    "/G2HPzD8XEAAr1NB.jpg",
+    "/Screenshot (248).png",
+    "/Screenshot (323).png",
+    "/G2HPzPXXAAAaTuW.jpg",
+    "/G2HPzPNXMAAhco3.jpg",
+    "/Screenshot (477).png",
+    "/Screenshot (631).png",
+    "/G2HPzRuWUAAP6Ou.jpg",
+    "/Screenshot (689).png",
+    "/Screenshot (791).png",
   ];
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   // Split projects
   const workExperience = projects.filter(p => ["Kovana Care", "Nexus Botix"].includes(p.title));
@@ -178,19 +212,26 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full overflow-x-auto pb-12 hide-scrollbar px-4 md:px-0 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-          <div className="flex gap-6 md:gap-8 px-4 md:px-20 w-max mx-auto">
-            {creations.map((item, idx) => (
+        <div
+          ref={scrollRef}
+          className="w-full overflow-x-auto pb-12 cursor-grab active:cursor-grabbing hide-scrollbar px-4 md:px-0 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
+          <div className="flex gap-6 md:gap-8 px-4 md:px-20 w-max mx-auto select-none">
+            {creations.map((src, idx) => (
               <div
                 key={idx}
-                className="relative w-[280px] md:w-[320px] h-[550px] md:h-[650px] flex-shrink-0 rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] bg-gray-100 border-[8px] border-white group"
+                className="relative h-[400px] md:h-[500px] flex-shrink-0 rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] bg-gray-100 border-[8px] border-white group"
               >
-                <div className="absolute inset-0 bg-gray-200 animate-pulse group-hover:animate-none"></div>
-                <Image
-                  src={item.image}
-                  alt={`Creation ${item.id}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                {/* We use standard img tag here to allow natural aspect ratio scaling with fixed height */}
+                <img
+                  src={src}
+                  alt={`Creation ${idx}`}
+                  className="h-full w-auto object-cover pointer-events-none"
+                  loading="lazy"
                 />
 
                 {/* Overlay reflection effect */}
@@ -286,44 +327,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Selected Case Studies Banner (Mockup) */}
-      <section className="w-full max-w-5xl px-4 mb-32">
-        <div className="flex items-center gap-3 mb-6">
-          <FolderOpen className="w-8 h-8 text-yellow-500" />
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-900">Selected Case Studies</h2>
-        </div>
-        <p className="text-gray-600 max-w-2xl mb-10 text-lg">
-          A few handpicked projects where I share how I approach problems, design architecture, and implement high-performance solutions.
-        </p>
-
-        <div className="w-full bg-gradient-to-r from-orange-400 to-red-500 rounded-[2rem] p-6 md:p-12 relative overflow-hidden h-[500px]">
-          {/* Mockup Container */}
-          <div className="absolute top-10 left-10 md:left-24 right-10 md:right-24 bottom-0 bg-white shadow-2xl rounded-t-3xl p-6 md:p-10 flex flex-col items-center">
-            <div className="w-full h-8 bg-gray-100 rounded-full mb-6 flex items-center px-4 gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div className="w-3 h-3 rounded-full bg-green-400"></div>
-            </div>
-            <div className="w-full h-full bg-gray-50 rounded-xl p-8 flex flex-col gap-6 overflow-hidden">
-              <div className="flex items-center justify-between">
-                <div className="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-bold">Featured</div>
-                <span className="text-gray-400 text-sm">Motion Pipe • 2025</span>
-              </div>
-              <h3 className="font-serif text-4xl text-gray-900">Automating Content Orchestration</h3>
-              <p className="text-gray-600">
-                Engineered a high-concurrency Golang engine to automate marketing lifecycles.
-                Reduced manual effort by 100% and increased output by 10x using AI-driven asset generation.
-              </p>
-              <div className="mt-auto flex gap-4">
-                <div className="h-24 w-1/3 bg-gray-200 rounded-lg"></div>
-                <div className="h-24 w-1/3 bg-gray-200 rounded-lg delay-75"></div>
-                <div className="h-24 w-1/3 bg-gray-200 rounded-lg delay-150"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Process Section */}
       <section className="w-full max-w-4xl px-4 mb-32">
         <div className="flex items-center gap-3 mb-10">
@@ -352,13 +355,13 @@ export default function Home() {
       </section>
 
       {/* About Me / Scrapbook */}
-      <section className="w-full max-w-4xl px-4 relative">
+      <section className="w-full max-w-6xl px-4 relative">
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl text-gray-900 mb-2">"Wait a minute... who are you?"</h2>
           <div className="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
         </div>
 
-        <div className="bg-[#Fdfcf8] p-6 md:p-12 rounded-sm shadow-xl border border-gray-200 relative rotate-1 max-w-3xl mx-auto">
+        <div className="bg-[#Fdfcf8] p-6 md:p-12 rounded-sm shadow-xl border border-gray-200 relative rotate-1 max-w-5xl mx-auto">
           {/* Tape effects */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/80 -rotate-2 shadow-sm"></div>
           <div className="absolute top-10 -right-4 w-8 h-24 bg-yellow-200/80 rotate-3 shadow-sm"></div>
@@ -387,7 +390,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-full md:w-2/3">
+            <div className="w-full md:w-2/3 md:pr-16">
               <p className="text-gray-700 leading-loose font-serif text-lg mb-6">
                 Hi, My name is <strong className="text-black">Samuel Tuoyo</strong>. I'm a Backend Software Engineer with years of experience crafting high-performance digital systems.
               </p>
