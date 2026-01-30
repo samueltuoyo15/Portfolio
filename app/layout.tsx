@@ -18,9 +18,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Samuel Tuoyo | Senior Backend Engineer",
+  title: "Samuel Tuoyo | Full Stack Software Developer",
   description:
-    "Senior Backend Software Engineer specializing in high-concurrency API architecture, NestJS, and secure multi-tenant systems. View my portfolio and projects.",
+    "Full Stack Software Developer specializing in high-concurrency API architecture, NestJS, and secure multi-tenant systems. View my portfolio and projects.",
   keywords: [
     "Samuel Tuoyo",
     "Backend Engineer",
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     "API Architecture",
   ],
   openGraph: {
-    title: "Samuel Tuoyo | Senior Backend Engineer",
-    description: "Senior Backend Software Engineer specializing in high-concurrency API architecture and secure multi-tenant systems.",
+    title: "Samuel Tuoyo | Full Stack Software Developer",
+    description: "Full Stack Software Developer specializing in high-concurrency API architecture and secure multi-tenant systems.",
     type: "website",
   },
 };

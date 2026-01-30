@@ -215,10 +215,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center pb-20 font-sans">
+    <div className="min-h-screen flex flex-col items-center pb-20 font-sans overflow-x-hidden w-full">
       <nav className={`sticky top-0 z-50 w-full flex justify-center transition-all duration-300 ${isScrolled ? "bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm" : "bg-transparent"}`}>
-        <div className="w-full max-w-6xl px-10 md:px-3 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+        <div className="w-full max-w-6xl px-10 md:px-3 py-4 flex justify-center md:justify-between items-center">
+          <div className="hidden md:flex items-center gap-3">
             <div className="hidden md:inline-flex w-10 h-10 rounded-full overflow-hidden border border-gray-200 relative">
               <Image
                 src="/avatar.jpg"
@@ -232,13 +232,21 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsResumeOpen(true)}
-              className="flex items-center gap-2 text-sm font-medium hover:opacity-70 transition border border-gray-200 px-4 py-2 rounded-full"
+              className="hidden md:flex items-center gap-2 text-sm font-medium hover:opacity-70 transition border border-gray-200 px-4 py-2 rounded-full"
               aria-label="View Resume"
             >
               <FileText className="w-4 h-4" /> VIEW RESUME
             </button>
 
             <div className="flex gap-2">
+              <SocialIcon
+                url="https://github.com/samueltuoyo15"
+                bgColor="#000"
+                fgColor="#fff"
+                target="_blank"
+                style={{ height: 40, width: 40 }}
+                className="hover:scale-110 transition-transform"
+              />
               <SocialIcon
                 url="https://linkedin.com/in/samuel-tuoyo-8568b62b6"
                 target="_blank"
@@ -267,7 +275,7 @@ export default function Home() {
         <div className="absolute -top-32 left-8 md:left-12 w-0.5 h-32 bg-gray-800/80 z-0"></div>
         <div className="absolute -top-32 right-8 md:right-20 w-0.5 h-32 bg-gray-800/80 z-0"></div>
 
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur border border-gray-200 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-sm z-20">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur border border-gray-200 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-sm z-20">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -288,7 +296,7 @@ export default function Home() {
 
             <a
               href="mailto:samueltuoyo9082@gmail.com"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 mt-4 md:mt-0"
             >
               <Send className="w-3 h-3" /> CONTACT ME
             </a>
@@ -300,7 +308,7 @@ export default function Home() {
 
           <div className="flex items-center gap-2 text-gray-500 font-medium mb-4 text-sm">
             <Briefcase className="w-4 h-4" />
-            Backend Software Engineer
+            Full Stack Software Developer
           </div>
 
           <p className="max-w-xl text-base text-gray-600 mb-6 leading-normal font-light">
@@ -444,7 +452,7 @@ export default function Home() {
                 href={article.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative h-auto aspect-[4/3] w-[320px] md:w-[400px] flex-shrink-0 rounded-[2.5rem] overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-white border border-gray-100 group flex flex-col active:scale-95"
+                className="relative h-auto aspect-[4/3] w-[320px] md:w-[400px] flex-shrink-0 rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-white border border-gray-100 group flex flex-col active:scale-95"
               >
                 <div className="h-fit relative overflow-hidden bg-gray-100">
                   <img
@@ -484,7 +492,7 @@ export default function Home() {
                 {step.icon}
               </div>
               <div className="pb-8 border-b border-gray-300 w-full">
-                <h4 className="font-bold text-gray-900 text-lg mb-2 h-[1.5em]"><TypewriterText text={step.title} speed={15} /></h4>
+                <h4 className="font-bold text-gray-900 text-lg mb-2 min-h-[1.5em]"><TypewriterText text={step.title} speed={15} /></h4>
                 <p className="text-gray-600 leading-relaxed">{step.desc}</p>
               </div>
             </div>
@@ -501,11 +509,11 @@ export default function Home() {
         <div className="bg-[#Fdfcf8] p-6 md:p-12 rounded-sm shadow-xl border border-gray-200 relative rotate-1 max-w-5xl mx-auto">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/80 -rotate-2 shadow-sm"></div>
           <div className="absolute top-10 -right-4 w-8 h-24 bg-yellow-200/80 rotate-3 shadow-sm"></div>
-          <div className="absolute -top-16 -right-2 md:-top-12 md:-right-12 w-32 h-32 md:w-52 md:h-52 bg-white p-2 md:p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 block transition hover:scale-110 hover:rotate-0 duration-300">
+          <div className="absolute -top-4 -right-2 md:-top-12 md:-right-12 w-40 h-40 md:w-52 md:h-52 bg-white p-2 md:p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 block transition hover:scale-110 hover:rotate-0 duration-300">
             <div className="relative w-full h-full bg-gray-800 overflow-hidden filter sepia-[.2]">
               <Image src="/laptop.jpg" alt="My Workstation" fill className="object-cover" />
             </div>
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-4 md:w-6 h-12 md:h-16 bg-[#eecd86] opacity-90 shadow-sm transform -rotate-2"></div>
+            <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-4 md:w-6 h-24 md:h-16 bg-[#eecd86] opacity-90 shadow-sm transform -rotate-2"></div>
           </div>
 
           <div className="flex flex-col md:flex-row gap-8">
@@ -525,7 +533,7 @@ export default function Home() {
 
             <div className="w-full md:w-2/3 md:pr-16">
               <p className="text-gray-700 leading-loose font-serif text-lg mb-6">
-                Hi, My name is <strong className="text-black">Samuel Tuoyo</strong>. I'm a Backend Software Engineer with years of experience crafting high-performance digital systems.
+                Hi, My name is <strong className="text-black">Samuel Tuoyo</strong>. I'm a Full Stack Software Developer with years of experience crafting high-performance digital systems.
               </p>
               <p className="text-gray-600 mb-6 font-sans">
                 I focus on creating seamless APIs that solve real problems. When I'm not coding, you'll catch me exploring new tech, optimizing database queries.
@@ -547,6 +555,7 @@ export default function Home() {
                   <h4 className="font-sans font-bold text-gray-900 text-lg mb-6 -mt-2">My Skillsets include:</h4>
 
                   <ul className="space-y-1 list-none ml-2">
+                    <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> Frontend: Next.js, React, Tailwind CSS</li>
                     <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> Backend: Node.js (NestJS, Express), WebSockets, SSE</li>
                     <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> Desktop: Electron JS</li>
                     <li className="flex items-center gap-3"><span className="text-green-600 font-bold text-xl">✓</span> DB & Caching: PostgreSQL, MongoDB, Redis, SQLite, BullMQ</li>
@@ -583,7 +592,7 @@ export default function Home() {
         <div className="bg-[#111] text-white rounded-3xl p-12 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(#4b5563 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
           <div className="relative z-10">
-            <h2 className="font-serif text-3xl md:text-5xl mb-6">Ready to scale your backend?</h2>
+            <h2 className="font-serif text-3xl md:text-5xl mb-6">Ready to scale your platform?</h2>
             <p className="text-gray-400 mb-8 max-w-lg mx-auto">Let's build something robust, secure, and scalable. I am currently available for new opportunities.</p>
             <a href="mailto:samueltuoyo9082@gmail.com" className="inline-flex items-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-full hover:scale-105 transition">
               Let's Talk <Rocket className="w-5 h-5" />
