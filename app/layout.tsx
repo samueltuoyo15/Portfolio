@@ -62,8 +62,7 @@ export const metadata: Metadata = {
     title: siteMetadata.title,
   },
   other: {
-    "google-site-verification":
-      process.env.VITE_GOOGLE_SITE_VERIFICATION_TOKEN!,
+    "google-site-verification": process.env.GOOGLE_SITE_VERIFICATION_TOKEN!,
   },
 };
 
