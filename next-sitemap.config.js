@@ -1,0 +1,13 @@
+/** @type {import('next-sitemap').IConfig} */
+const config = {
+  siteUrl: "http://samuel-tuoyo.vercel.app",
+  generateRobotsTxt: true,
+  changefreq: "daily",
+  priority: 0.8,
+  sitemapSize: 5000,
+  robotsTxtOptions: {
+    policies: [{ userAgent: "*", allow: "/" }],
+  },
+};
+
+export default config;

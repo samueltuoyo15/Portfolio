@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Caveat } from "next/font/google";
 import "./globals.css";
+import siteMetadata from "@/utils/site.meta.data";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,22 +19,51 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Samuel Tuoyo | Full Stack Software Developer",
-  description:
-    "Full Stack Software Developer specializing in high-concurrency API architecture, NestJS, and secure multi-tenant systems. View my portfolio and projects.",
+  metadataBase: new URL(siteMetadata.siteUrl),
+  title: {
+    template: `%s | ${siteMetadata.title}`,
+    default: siteMetadata.title,
+  },
+  description: siteMetadata.description,
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.title,
+    locale: "en_US",
+    type: "website",
+  },
   keywords: [
     "Samuel Tuoyo",
     "Backend Engineer",
+    "Website Developer",
+    "Full Stack Developer",
     "NestJS",
     "Node.js",
     "Software Engineer",
     "Portfolio",
+    "Website",
     "API Architecture",
   ],
-  openGraph: {
-    title: "Samuel Tuoyo | Full Stack Software Developer",
-    description: "Full Stack Software Developer specializing in high-concurrency API architecture and secure multi-tenant systems.",
-    type: "website",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+  },
+  other: {
+    "google-site-verification":
+      process.env.VITE_GOOGLE_SITE_VERIFICATION_TOKEN!,
   },
 };
 
