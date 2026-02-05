@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: http://samuel-tuoyo.vercel.app
+
+# Sitemaps
+Sitemap: http://samuel-tuoyo.vercel.app/sitemap.xml
