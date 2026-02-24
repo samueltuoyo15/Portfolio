@@ -1,15 +1,16 @@
-# Allow all search engine bots
+# *
 User-agent: *
 Allow: /
 
-# Specifically allow Google and Bing
+# Googlebot
 User-agent: Googlebot
 Allow: /
 
+# Bingbot
 User-agent: Bingbot
 Allow: /
 
-# Host - use HTTPS
+# Host
 Host: https://samuel-tuoyo.vercel.app
 
 # Sitemaps
