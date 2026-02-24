@@ -135,6 +135,8 @@ export default function Home() {
     "/G2HPzPXXAAAaTuW.jpg",
     "/G2HPzPNXMAAhco3.jpg",
     "/Screenshot (477).png",
+    "/Screenshot 2026-02-24 114128.png",
+    "/Screenshot 2026-02-24 151602.png",
     "/Gxp2xEsXYAAwe2y.jpg",
     "/Gxp3MG5XQAAiFCw.jpg",
     "/Screenshot (248).png",
@@ -358,8 +360,10 @@ export default function Home() {
           </div>
 
           <p className="max-w-xl text-base text-gray-600 mb-6 leading-normal font-light">
-            Welcome to my corner of the internet where I shape complex backend
-            systems into seamless, high-performance APIs.
+            Full Stack Web Developer based in{" "}
+            <strong className="text-gray-800">Warri, Delta State, Nigeria</strong>
+            {" "}— I build high-performance websites, web apps, and APIs for
+            businesses and startups across Nigeria and beyond.
           </p>
 
           <div className="flex flex-wrap gap-2 w-full">
@@ -774,6 +778,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services & Location — critical for local SEO */}
+      <section className="w-full max-w-6xl px-4 mb-20" aria-label="Services and Location">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition">
+            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-5">
+              <Server className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Web & App Development</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Custom websites, web applications, e-commerce platforms, and
+              landing pages built for businesses in{" "}
+              <strong>Warri, Delta State</strong> and across Nigeria.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition">
+            <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center mb-5">
+              <Cpu className="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">API & Backend Systems</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Scalable REST APIs, payment integration (Paystack, Stripe),
+              authentication systems, and database architecture for Nigerian
+              startups and businesses.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition">
+            <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-5">
+              <ShieldCheck className="w-6 h-6 text-green-600" />
+            </div>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Tech Consulting</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Software architecture reviews, technical planning, and digital
+              transformation consulting for businesses in Warri,{" "}
+              <strong>Delta State</strong>, and the South-South region.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="w-full max-w-4xl px-4 mb-20 text-center">
         <div className="bg-[#111] text-white rounded-3xl p-12 relative overflow-hidden">
           <div
@@ -785,11 +830,13 @@ export default function Home() {
           ></div>
           <div className="relative z-10">
             <h2 className="font-serif text-3xl md:text-5xl mb-6">
-              Ready to scale your platform?
+              Need a website or web app in Warri?
             </h2>
             <p className="text-gray-400 mb-8 max-w-lg mx-auto">
-              Let&apos;s build something robust, secure, and scalable. I am
-              currently available for new opportunities.
+              I&apos;m a web developer based in{" "}
+              <span className="text-white font-semibold">Warri, Delta State</span>{" "}
+              — let&apos;s build something robust, secure, and scalable for your
+              business. Currently available for new projects.
             </p>
             <a
               href="mailto:samueltuoyo9082@gmail.com"
@@ -841,6 +888,15 @@ export default function Home() {
       )}
 
       <footer className="w-full py-8 text-center text-gray-500 text-sm font-medium">
+        <address className="not-italic mb-2 text-xs text-gray-400">
+          Samuel Tuoyo · Web Developer ·{" "}
+          <span itemProp="addressLocality">Warri</span>,{" "}
+          <span itemProp="addressRegion">Delta State</span>,{" "}
+          <span itemProp="addressCountry">Nigeria</span> ·{" "}
+          <a href="mailto:samueltuoyo9082@gmail.com" className="hover:text-gray-600 transition">
+            samueltuoyo9082@gmail.com
+          </a>
+        </address>
         <p>© {new Date().getFullYear()} Samuel Tuoyo. All rights reserved.</p>
       </footer>
     </div>
