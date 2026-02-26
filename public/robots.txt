@@ -11,7 +11,7 @@ User-agent: Bingbot
 Allow: /
 
 # Host
-Host: https://samuel-tuoyo.vercel.app
+Host: https://samuel-tuoyo.is-a.dev
 
 # Sitemaps
-Sitemap: https://samuel-tuoyo.vercel.app/sitemap.xml
+Sitemap: https://samuel-tuoyo.is-a.dev/sitemap.xml

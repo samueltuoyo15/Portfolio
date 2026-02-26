@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: "https://samuel-tuoyo.vercel.app",
+  siteUrl: "https://samuel-tuoyo.is-a.dev",
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 1.0,
@@ -12,10 +12,9 @@ const config = {
       { userAgent: "Bingbot", allow: "/" },
     ],
     additionalSitemaps: [
-      "https://samuel-tuoyo.vercel.app/sitemap.xml",
+      "https://samuel-tuoyo.is-a.dev/sitemap.xml",
     ],
   },
-  // Explicitly list all pages with their SEO priority
   additionalPaths: async (config) => [
     await config.transform(config, "/"),
   ],
