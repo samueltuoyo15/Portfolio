@@ -82,6 +82,7 @@ export default function Home() {
       desc: "Healthcare Startup | Multi-tenant RBAC System",
       tech: ["NestJS", "PostgreSQL", "Redis", "SSE"],
       color: "bg-[#1E1E1E]",
+      link: "https://example.com/kovana",
     },
     {
       title: "Motion Pipe",
@@ -89,6 +90,7 @@ export default function Home() {
       desc: "AI-Driven Marketing & Content Orchestration SaaS",
       tech: ["Golang", "AI/ML", "Concurrency"],
       color: "bg-[#2563EB]",
+      link: "https://motion-pipe.vercel.app/",
       details: {
         problem:
           "High-growth companies struggle to maintain consistent social media presence due to manual overhead.",
@@ -104,6 +106,7 @@ export default function Home() {
       desc: "Fintech Creator-Support Infrastructure",
       tech: ["Paystack", "BullMQ", "Prisma"],
       color: "bg-[#7C3AED]",
+      link: "https://happr.vercel.app/",
       details: {
         problem:
           "African creators face high barriers to entry with international platforms and payout delays.",
@@ -119,6 +122,7 @@ export default function Home() {
       desc: "Open-Source AI README Generator",
       tech: ["Google Gemini", "CLI", "Typescript"],
       color: "bg-[#1E1E1E]",
+      link: "https://dokugen-readme.vercel.app/",
       details: {
         problem:
           "Developers often neglect documentation, leading to low repository adoption.",
@@ -134,6 +138,7 @@ export default function Home() {
       desc: "Built a premium fashion brand website for Tessy Palace, Warri, Delta State, featuring animated galleries, luxury product showcases, and a bespoke collection display for fashion, perfumes, and accessories.",
       tech: ["Next.js", "TypeScript", "CSS"],
       color: "bg-[#8B4513]",
+      link: "#",
     },
   ];
 
@@ -199,32 +204,25 @@ export default function Home() {
     },
   ];
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const creationsRef = useRef<HTMLDivElement>(null);
+  const [isCreationsDragging, setIsCreationsDragging] = useState(false);
+  const [creationsStartX, setCreationsStartX] = useState(0);
+  const [creationsScrollLeft, setCreationsScrollLeft] = useState(0);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
+  const handleCreationsMouseDown = (e: React.MouseEvent) => {
+    if (!creationsRef.current) return;
+    setIsCreationsDragging(true);
+    setCreationsStartX(e.pageX - creationsRef.current.offsetLeft);
+    setCreationsScrollLeft(creationsRef.current.scrollLeft);
   };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return;
+  const handleCreationsMouseLeave = () => setIsCreationsDragging(false);
+  const handleCreationsMouseUp = () => setIsCreationsDragging(false);
+  const handleCreationsMouseMove = (e: React.MouseEvent) => {
+    if (!isCreationsDragging || !creationsRef.current) return;
     e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
+    const x = e.pageX - creationsRef.current.offsetLeft;
+    const walk = (x - creationsStartX) * 2;
+    creationsRef.current.scrollLeft = creationsScrollLeft - walk;
   };
 
   const articlesScrollRef = useRef<HTMLDivElement>(null);
@@ -387,9 +385,14 @@ export default function Home() {
           <div className="flex flex-wrap gap-2 w-full">
             {[
               {
-                label: "TECHNICAL INNOVATIONS",
+                label: "PROJECTS",
                 icon: <FolderOpen className="w-3 h-3" />,
                 id: "innovations",
+              },
+              {
+                label: "LANDING PAGES",
+                icon: <Rocket className="w-3 h-3" />,
+                id: "landing-pages",
               },
               {
                 label: "MY PROCESS",
@@ -443,21 +446,34 @@ export default function Home() {
           <div className="absolute left-0 top-0 h-full w-16 md:w-32 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 h-full w-16 md:w-32 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
 
-          <div className="marquee-track-slow gap-6 pb-8 px-4 select-none">
-            {[...creations, ...creations].map((src, idx) => (
-              <div
-                key={idx}
-                className="relative h-80 md:h-[30rem] shrink-0 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] bg-gray-100 border-8 border-white group"
-              >
-                <img
-                  src={src}
-                  alt={`Creation ${idx}`}
-                  className="h-full w-auto object-cover pointer-events-none"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              </div>
-            ))}
+          <div
+            ref={creationsRef}
+            className="overflow-x-auto cursor-grab active:cursor-grabbing"
+            style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
+            onMouseDown={handleCreationsMouseDown}
+            onMouseLeave={handleCreationsMouseLeave}
+            onMouseUp={handleCreationsMouseUp}
+            onMouseMove={handleCreationsMouseMove}
+          >
+            <div
+              className="marquee-track-slow gap-6 pb-8 px-4 select-none"
+              style={{ animationPlayState: isCreationsDragging ? "paused" : undefined }}
+            >
+              {[...creations, ...creations].map((src, idx) => (
+                <div
+                  key={idx}
+                  className="relative h-80 md:h-[30rem] shrink-0 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] bg-gray-100 border-8 border-white group"
+                >
+                  <img
+                    src={src}
+                    alt={`Creation ${idx}`}
+                    className="h-full w-auto object-cover pointer-events-none"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -465,7 +481,7 @@ export default function Home() {
       <section id="innovations" className="w-full max-w-6xl px-4 mb-24">
         <div className="flex items-center gap-4 mb-12">
           <h2 className="text-4xl md:text-6xl font-handwriting text-gray-500 -rotate-2">
-            Technical Innovations
+            Projects
           </h2>
         </div>
 
@@ -473,9 +489,9 @@ export default function Home() {
           {otherProjects.map((project, i) => (
             <div
               key={i}
-              className={`group relative rounded-3xl overflow-hidden shadow-lg h-[30rem] bg-white border border-gray-100 transition hover:-translate-y-1`}
+              className={`group relative rounded-3xl overflow-hidden shadow-lg min-h-[30rem] h-full flex flex-col bg-white border border-gray-100 transition hover:-translate-y-1`}
             >
-              <div className="h-64 relative overflow-hidden">
+              <div className="h-64 shrink-0 relative overflow-hidden">
                 <img
                   src={
                     project.title === "Happr"
@@ -530,15 +546,30 @@ export default function Home() {
                       <p className="leading-relaxed">{project.desc}</p>
                     )}
                   </div>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tech.slice(0, 3).map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-0.5 bg-white/20 backdrop-blur rounded-full text-[10px] font-semibold"
+                  <div className="flex justify-between items-center pt-2 mt-auto border-t border-white/10">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.slice(0, 3).map((t) => (
+                        <span
+                          key={t}
+                          className="px-2 py-0.5 bg-white/20 backdrop-blur rounded-full text-[10px] font-semibold"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
                       >
-                        {t}
-                      </span>
-                    ))}
+                        View Live
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -558,48 +589,127 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Auto-scrolling marquee */}
-        <div className="relative w-full overflow-hidden">
+        {/* Drag-scrollable marquee */}
+        <div className="relative w-full">
           <div className="absolute left-0 top-0 h-full w-16 md:w-32 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 h-full w-16 md:w-32 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
 
-          <div className="marquee-track gap-5 px-4 pb-4">
-            {[...articles, ...articles].map((article, idx) => (
-              <a
-                key={idx}
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group shrink-0 w-[300px] md:w-[360px] bg-[#111] rounded-2xl p-6 flex flex-col justify-between gap-4 border border-white border-opacity-5 hover:border-opacity-20 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-              >
-                {/* Top row */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 24 24" fill="black" className="w-4 h-4">
-                        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
-                      </svg>
+          <div
+            ref={articlesScrollRef}
+            className="overflow-x-auto cursor-grab active:cursor-grabbing"
+            style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
+            onMouseDown={handleArticlesMouseDown}
+            onMouseLeave={handleArticlesMouseLeave}
+            onMouseUp={handleArticlesMouseUp}
+            onMouseMove={handleArticlesMouseMove}
+          >
+            <div
+              className="marquee-track gap-5 px-4 pb-4"
+              style={{ animationPlayState: isArticlesDragging ? "paused" : undefined }}
+            >
+              {[...articles, ...articles].map((article, idx) => (
+                <a
+                  key={idx}
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group shrink-0 w-[300px] md:w-[360px] bg-[#111] rounded-2xl p-6 flex flex-col justify-between gap-4 border border-white border-opacity-5 hover:border-opacity-20 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                >
+                  {/* Top row */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" fill="black" className="w-4 h-4">
+                          <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                        </svg>
+                      </div>
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Medium</span>
                     </div>
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Medium</span>
+                    <svg className="w-4 h-4 text-gray-600 group-hover:text-gray-300 transition shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" />
+                    </svg>
                   </div>
-                  <svg className="w-4 h-4 text-gray-600 group-hover:text-gray-300 transition shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" />
-                  </svg>
-                </div>
 
-                {/* Title */}
-                <p className="text-white font-serif text-base leading-snug group-hover:text-gray-300 transition line-clamp-3">
-                  {article.title}
-                </p>
+                  {/* Title */}
+                  <p className="text-white font-serif text-base leading-snug group-hover:text-gray-300 transition line-clamp-3">
+                    {article.title}
+                  </p>
 
-                {/* Bottom row */}
-                <div className="flex items-center justify-between pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                  <span className="text-xs text-gray-500 font-medium">Samuel Tuoyo</span>
-                  <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Read →</span>
-                </div>
-              </a>
-            ))}
+                  {/* Bottom row */}
+                  <div className="flex items-center justify-between pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                    <span className="text-xs text-gray-500 font-medium">Samuel Tuoyo</span>
+                    <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Read →</span>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section id="landing-pages" className="w-full max-w-6xl px-4 mb-24">
+        <div className="flex items-center gap-4 mb-12">
+          <h2 className="text-4xl md:text-6xl font-handwriting text-gray-500 -rotate-2">
+            Landing Pages I&apos;ve Brought to Life
+          </h2>
+        </div>
+        <p className="text-gray-500 text-sm mb-10 max-w-xl">
+          Pixel-perfect frontend implementations of Figma designs, built with React, Next.js, and CSS.
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {[
+            { src: "/lading-page-1.png", title: "Encrypted File Storage Platform", tech: ["React Js", "CSS"], link: "https://synapse-vault-livid.vercel.app/" },
+          ].map((page, i) => (
+            <div
+              key={i}
+              className="group relative rounded-3xl overflow-hidden shadow-lg bg-white border border-gray-100 transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="relative h-56 overflow-hidden bg-gray-100">
+                <img
+                  src={page.src}
+                  alt={page.title}
+                  className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/10" />
+              </div>
+              <div className="p-5 bg-[#1a1a2e] text-white flex flex-col gap-3">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-bold font-serif text-base">{page.title}</h3>
+                  <div className="p-1.5 bg-white/10 rounded-full backdrop-blur-md">
+                    <Rocket className="w-4 h-4 text-white" />
+                  </div>
+                </div>
+                <p className="text-white/60 text-xs">Figma to Production</p>
+                <div className="flex justify-between items-center pt-2 border-t border-white/10 mt-1">
+                  <div className="flex flex-wrap gap-2">
+                    {page.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-2 py-0.5 bg-white/20 backdrop-blur rounded-full text-[10px] font-semibold"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {page.link && (
+                    <a
+                      href={page.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+                    >
+                      Live App
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
