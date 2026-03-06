@@ -27,6 +27,7 @@ export const LandingPagesSection = () => {
                         src: "/techcare.png",
                         title: "Tech Care Patient Dashboard",
                         tech: ["HTML", "CSS", "API"],
+                        link: "https://samueltuoyo15.github.io/TechCare/",
                     },
                 ].map((page, i) => (
                     <div
