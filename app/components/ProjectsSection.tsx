@@ -20,6 +20,14 @@ const projects = [
         link: "https://everdownload-production.up.railway.app/",
     },
     {
+        title: "AR Object Scanner",
+        role: "Creator",
+        desc: "Browser-based AR object detection app that overlays YOLOv8-powered bounding boxes and labels in real time using your camera.",
+        tech: ["TypeScript", "Vite", "YOLOv8"],
+        color: "bg-[#0f172a]",
+        link: "https://ar-object-scanner.vercel.app/",
+    },
+    {
         title: "Dokugen",
         role: "Creator",
         desc: "Open-Source AI README Generator",
@@ -108,7 +116,9 @@ export const ProjectsSection = () => {
                                                 ? "/tessy-palace.png"
                                                 : project.title === "Ever download"
                                                     ? "/everdownload.png"
-                                                    : "/motion-pipe.png"
+                                                    : project.title === "AR Object Scanner"
+                                                        ? "/ar-object-scanner.png"
+                                                        : "/motion-pipe.png"
                                 }
                                 alt={project.title}
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500"

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 
 const creations = [
+    "https://ar-object-scanner.vercel.app/",
     "ever-download-mobile.png",
     "/tessy-palace-2.png",
     "/G2HPzPNXMAAhco3.jpg",
