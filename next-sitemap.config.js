@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: "https://samuel-tuoyo.is-a.dev",
+  siteUrl: "https://samueltuoyo.com",
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 1.0,
@@ -12,7 +12,7 @@ const config = {
       { userAgent: "Bingbot", allow: "/" },
     ],
     additionalSitemaps: [
-      "https://samuel-tuoyo.is-a.dev/sitemap.xml",
+      "https://samueltuoyo.com/sitemap.xml",
     ],
   },
   additionalPaths: async (config) => [

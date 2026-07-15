@@ -33,7 +33,7 @@ const projects = [
         desc: "Open-Source AI README Generator",
         tech: ["Google Gemini", "CLI", "Typescript"],
         color: "bg-[#1E1E1E]",
-        link: "https://dokugen-readme.vercel.app/",
+        link: "https://dokugen.samueltuoyo.com/",
         details: {
             problem:
                 "Developers often neglect documentation, leading to low repository adoption.",
@@ -65,7 +65,7 @@ const projects = [
         desc: "Fintech Creator-Support Infrastructure",
         tech: ["Paystack", "BullMQ", "Prisma"],
         color: "bg-[#7C3AED]",
-        link: "https://happr.vercel.app/",
+        link: "https://myhappr.com/",
         details: {
             problem:
                 "African creators face high barriers to entry with international platforms and payout delays.",

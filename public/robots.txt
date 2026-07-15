@@ -11,7 +11,7 @@ User-agent: Bingbot
 Allow: /
 
 # Host
-Host: https://samuel-tuoyo.is-a.dev
+Host: https://samueltuoyo.com
 
 # Sitemaps
-Sitemap: https://samuel-tuoyo.is-a.dev/sitemap.xml
+Sitemap: https://samueltuoyo.com/sitemap.xml

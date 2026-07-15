@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
             value: "samuel-tuoyo.vercel.app",
           },
         ],
-        destination: "https://samuel-tuoyo.is-a.dev/:path*",
+        destination: "https://samueltuoyo.com/:path*",
         permanent: true,
       },
     ];
