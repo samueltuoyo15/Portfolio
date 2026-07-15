@@ -13,6 +13,8 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
+
+
 const caveat = Caveat({
   subsets: ["latin"],
   variable: "--font-handwriting",
