@@ -1,46 +1,109 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-const creations = [
-    "https://ar-object-scanner.vercel.app/",
-    "ever-download-mobile.png",
-    "/tessy-palace-2.png",
+const mobileScreenshots = [
+    "/ever-download-mobile.png",
     "/G2HPzPNXMAAhco3.jpg",
     "/G2HPzD8XEAAr1NB.jpg",
     "/G2HPzPXXAAAaTuW.jpg",
-    "/tessy-palace-3.png",
     "/G2HPzRuWUAAP6Ou.jpg",
+    "/tessy-palace-2.png",
+    "/tessy-palace-3.png",
 ];
 
-export const CreationsMarquee = () => {
-    const creationsRef = useRef<HTMLDivElement>(null);
-    const [isCreationsDragging, setIsCreationsDragging] = useState(false);
-    const [creationsStartX, setCreationsStartX] = useState(0);
-    const [creationsScrollLeft, setCreationsScrollLeft] = useState(0);
+const desktopScreenshots = [
+    "/everdownload.png",
+    "/image2.png",
+    "/image.png",
+    "/utils/image3.png",
+    "/Generate Readme - Language & Framework agnostic.png",
+    "/ar-object-scanner.png",
+];
 
-    const handleCreationsMouseDown = (e: React.MouseEvent) => {
-        if (!creationsRef.current) return;
-        setIsCreationsDragging(true);
-        setCreationsStartX(e.pageX - creationsRef.current.offsetLeft);
-        setCreationsScrollLeft(creationsRef.current.scrollLeft);
+function ScrollRow({
+    images,
+    cardClass,
+}: {
+    images: string[];
+    cardClass?: string;
+}) {
+    const rowRef = useRef<HTMLDivElement>(null);
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const scrollLeft = useRef(0);
+
+    const onMouseDown = (e: React.MouseEvent) => {
+        if (!rowRef.current) return;
+        isDragging.current = true;
+        startX.current = e.pageX - rowRef.current.offsetLeft;
+        scrollLeft.current = rowRef.current.scrollLeft;
+        rowRef.current.style.cursor = "grabbing";
     };
-    const handleCreationsMouseLeave = () => setIsCreationsDragging(false);
-    const handleCreationsMouseUp = () => setIsCreationsDragging(false);
-    const handleCreationsMouseMove = (e: React.MouseEvent) => {
-        if (!isCreationsDragging || !creationsRef.current) return;
+
+    const onMouseLeave = () => {
+        isDragging.current = false;
+        if (rowRef.current) rowRef.current.style.cursor = "grab";
+    };
+
+    const onMouseUp = () => {
+        isDragging.current = false;
+        if (rowRef.current) rowRef.current.style.cursor = "grab";
+    };
+
+    const onMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging.current || !rowRef.current) return;
         e.preventDefault();
-        const x = e.pageX - creationsRef.current.offsetLeft;
-        const walk = (x - creationsStartX) * 2;
-        creationsRef.current.scrollLeft = creationsScrollLeft - walk;
+        const x = e.pageX - rowRef.current.offsetLeft;
+        const walk = (x - startX.current) * 1.5;
+        rowRef.current.scrollLeft = scrollLeft.current - walk;
     };
 
+    return (
+        <div className="mb-10">
+            <div className="relative w-full">
+                <div className="absolute left-0 top-0 h-full w-12 md:w-24 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 h-full w-12 md:w-24 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+                <div
+                    ref={rowRef}
+                    className="overflow-x-auto cursor-grab select-none"
+                    style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+                    onMouseDown={onMouseDown}
+                    onMouseLeave={onMouseLeave}
+                    onMouseUp={onMouseUp}
+                    onMouseMove={onMouseMove}
+                >
+                    <div className="flex gap-5 pb-4 px-4 w-max">
+                        {images.map((src, idx) => (
+                            <div
+                                key={idx}
+                                className={`relative shrink-0 w-auto rounded-2xl overflow-hidden shadow-[0_16px_40px_-10px_rgba(0,0,0,0.25)] border-8 border-white bg-gray-100 group transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_24px_50px_-10px_rgba(0,0,0,0.35)] ${cardClass ?? ""}`}
+                            >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src={src}
+                                    alt={`Creation ${idx + 1}`}
+                                    className="h-full w-auto object-cover pointer-events-none"
+                                    draggable={false}
+                                    loading="lazy"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export const CreationsMarquee = () => {
     return (
         <section className="w-full mb-24 overflow-hidden">
             <div className="w-full max-w-6xl mx-auto px-4 mb-12 pt-8">
                 <div className="relative inline-block">
                     <h2 className="text-4xl md:text-6xl font-handwriting text-gray-400 -rotate-2">
-                        Snapshot of my creations
+                        couple snapshots of my creations
                         <svg
                             className="absolute -bottom-10 -right-20 w-24 h-24 text-gray-300 rotate-12 hidden md:block"
                             viewBox="0 0 200 100"
@@ -63,52 +126,17 @@ export const CreationsMarquee = () => {
                 </div>
             </div>
 
-            <div className="relative w-full">
-                <div className="absolute left-0 top-0 h-full w-16 md:w-32 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 h-full w-16 md:w-32 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+            {/* Mobile screenshots row */}
+            <ScrollRow
+                images={mobileScreenshots}
+                cardClass="h-[28rem] md:h-[36rem]"
+            />
 
-                <div
-                    ref={creationsRef}
-                    className="overflow-x-auto cursor-grab active:cursor-grabbing"
-                    style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}
-                    onMouseDown={handleCreationsMouseDown}
-                    onMouseLeave={handleCreationsMouseLeave}
-                    onMouseUp={handleCreationsMouseUp}
-                    onMouseMove={handleCreationsMouseMove}
-                >
-                    <div
-                        className="marquee-track-slow gap-6 pb-8 px-4 select-none"
-                        style={{
-                            animationPlayState: isCreationsDragging ? "paused" : undefined,
-                        }}
-                    >
-                        {[
-                            ...creations,
-                            ...creations,
-                            ...creations,
-                            ...creations,
-                            ...creations,
-                            ...creations,
-                        ].map((src, idx) => (
-                            <div
-                                key={idx}
-                                className="relative h-80 md:h-[30rem] shrink-0 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.4)] bg-gray-100 border-8 border-white group"
-                                onContextMenu={(e) => e.preventDefault()}
-                            >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                    src={src}
-                                    alt={`Creation ${idx}`}
-                                    className="h-full w-auto object-cover pointer-events-none select-none"
-                                    onContextMenu={(e) => e.preventDefault()}
-                                    loading="lazy"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            {/* Desktop screenshots row */}
+            <ScrollRow
+                images={desktopScreenshots}
+                cardClass="h-52 md:h-72"
+            />
         </section>
     );
 };

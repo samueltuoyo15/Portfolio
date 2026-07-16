@@ -13,7 +13,7 @@ export const ContactSection = () => {
                 ></div>
                 <div className="relative z-10">
                     <h2 className="font-serif text-3xl md:text-5xl mb-6">
-                        Need a website or web app in Warri?
+                        Need a reliable developer to work with?
                     </h2>
                     <p className="text-gray-400 mb-8 max-w-lg mx-auto">
                         I&apos;m a web developer based in{" "}

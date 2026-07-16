@@ -13,8 +13,6 @@ body {
   font-family: var(--font-sans, sans-serif);
   background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
   background-size: 24px 24px;
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 img {
@@ -65,7 +63,7 @@ img {
   }
 
   100% {
-    transform: translateX(-16.666667%);
+    transform: translateX(-50%);
   }
 }
 

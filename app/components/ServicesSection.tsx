@@ -44,8 +44,7 @@ export const ServicesSection = () => {
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
                         Software architecture reviews, technical planning, and digital
-                        transformation consulting for businesses in Warri,{" "}
-                        <strong>Delta State</strong>, and the South-South region.
+                        transformation consulting for businesses.
                     </p>
                 </div>
             </div>

@@ -47,7 +47,7 @@ export const Navbar = () => {
                             className="hover:scale-110 transition-transform"
                         />
                         <SocialIcon
-                            url="https://linkedin.com/in/samuel-tuoyo-8568b62b6"
+                            url="https://linkedin.com/in/samueltuoyo"
                             target="_blank"
                             style={{ height: 40, width: 40 }}
                             className="hover:scale-110 transition-transform"

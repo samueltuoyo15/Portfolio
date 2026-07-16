@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <div
       className="min-h-screen flex flex-col items-center pb-20 font-sans w-full"
-      onContextMenu={(e) => e.preventDefault()}
     >
       <Navbar />
       <HeroSection />

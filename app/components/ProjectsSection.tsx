@@ -13,7 +13,6 @@ const projects = [
     },
     {
         title: "Ever download",
-        role: "Creator",
         desc: "Download Any Video, Anywhere. Paste a link from YouTube, TikTok, Instagram, Twitter, Reddit, Twitch, Vimeo and more, download in seconds.",
         tech: ["Htmx", "Go", "Docker", "FFmpeg"],
         color: "bg-[#7f1d1d]",
@@ -21,7 +20,6 @@ const projects = [
     },
     {
         title: "AR Object Scanner",
-        role: "Creator",
         desc: "Browser-based AR object detection app that overlays YOLOv8-powered bounding boxes and labels in real time using your camera.",
         tech: ["TypeScript", "Vite", "YOLOv8"],
         color: "bg-[#0f172a]",
@@ -29,59 +27,34 @@ const projects = [
     },
     {
         title: "Dokugen",
-        role: "Creator",
         desc: "Open-Source AI README Generator",
         tech: ["Google Gemini", "CLI", "Typescript"],
         color: "bg-[#1E1E1E]",
         link: "https://dokugen.samueltuoyo.com/",
         details: {
             problem:
-                "Developers often neglect documentation, leading to low repository adoption.",
+                "Writing and maintaining README files is tedious and often skipped, leaving projects undocumented and hard to adopt.",
             solution:
-                "AI-driven CLI tool leveraging Gemini LLM to automate professional README generation.",
+                "An open-source CLI tool (npm & pip) that scans your codebase and generates a detailed, accurate README in seconds using Google Gemini. Supports any language or framework with zero config.",
             impact:
-                "Reduced 'Time-to-Documentation' by 90% for open-source projects.",
-        },
-    },
-    {
-        title: "Motion Pipe",
-        role: "System Architect",
-        desc: "AI-Driven Marketing & Content Orchestration SaaS",
-        tech: ["Golang", "AI/ML", "Concurrency"],
-        color: "bg-[#2563EB]",
-        link: "https://motion-pipe.vercel.app/",
-        details: {
-            problem:
-                "High-growth companies struggle to maintain consistent social media presence due to manual overhead.",
-            solution:
-                "High-concurrency Golang orchestration engine automating end-to-end lifecycle of marketing content.",
-            impact:
-                "Eliminated manual content cycles, allowing 10x advertising output without increasing headcount.",
+                "301 GitHub stars. Active users across 25+ pages on the leaderboard. Ships features including smart updates, AI commit messages, license generation, and system design diagram generation.",
         },
     },
     {
         title: "Happr",
         role: "Co-Architect",
         desc: "Fintech Creator-Support Infrastructure",
-        tech: ["Paystack", "BullMQ", "Prisma"],
+        tech: ["Flutterwave", "NestJS", "Prisma"],
         color: "bg-[#7C3AED]",
         link: "https://myhappr.com/",
         details: {
             problem:
-                "African creators face high barriers to entry with international platforms and payout delays.",
+                "African creators can't easily receive financial support from fans. Most global platforms don't support local African bank payouts.",
             solution:
-                "High-performance tipping platform using NestJS, Paystack & Prisma for zero-friction payouts.",
+                "A creator tip platform where fans pay globally (card, bank, M-Pesa) and creators withdraw directly to their local African bank account. Free plan keeps 100% of tips, settled via Flutterwave.",
             impact:
-                "Enabled instant financial settlements and secure transaction verification for 10,000+ users.",
+                "Live product, registered company (RC: 9481569). Real users sending and receiving support. Pro plan available at $2 with 0% supporter fees and creator analytics.",
         },
-    },
-    {
-        title: "Tessy Palace",
-        role: "Lead Developer",
-        desc: "Built a premium fashion brand website for Tessy Palace, Warri, Delta State, featuring animated galleries, luxury product showcases, and a bespoke collection display for fashion, perfumes, and accessories.",
-        tech: ["Next.js", "TypeScript", "CSS"],
-        color: "bg-[#8B4513]",
-        link: "#",
     },
 ];
 
@@ -109,16 +82,12 @@ export const ProjectsSection = () => {
                             <img
                                 src={
                                     project.title === "Happr"
-                                        ? "/happr.png"
+                                        ? "/myhapprscr.png"
                                         : project.title === "Dokugen"
                                             ? `/Generate Readme - Language & Framework agnostic.png`
-                                            : project.title === "Tessy Palace"
-                                                ? "/tessy-palace.png"
-                                                : project.title === "Ever download"
-                                                    ? "/everdownload.png"
-                                                    : project.title === "AR Object Scanner"
-                                                        ? "/ar-object-scanner.png"
-                                                        : "/motion-pipe.png"
+                                            : project.title === "Ever download"
+                                                ? "/everdownload.png"
+                                                : "/ar-object-scanner.png"
                                 }
                                 alt={project.title}
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500"
@@ -136,9 +105,11 @@ export const ProjectsSection = () => {
                                         <Cpu className="w-4 h-4 text-white" />
                                     </div>
                                 </div>
-                                <p className="text-white/80 font-medium text-sm mb-3">
-                                    {project.role}
-                                </p>
+                                {project.role && (
+                                    <p className="text-white/80 font-medium text-sm mb-3">
+                                        {project.role}
+                                    </p>
+                                )}
                             </div>
 
                             <div className="space-y-4">
