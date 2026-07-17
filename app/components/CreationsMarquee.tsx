@@ -16,7 +16,6 @@ const desktopScreenshots = [
     "/everdownload.png",
     "/image2.png",
     "/image.png",
-    "/utils/image3.png",
     "/Generate Readme - Language & Framework agnostic.png",
     "/ar-object-scanner.png",
 ];

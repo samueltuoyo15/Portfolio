@@ -16,8 +16,7 @@ export const ServicesSection = () => {
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
                         Custom websites, web applications, e-commerce platforms, and
-                        landing pages built for businesses in{" "}
-                        <strong>Warri, Delta State</strong> and across Nigeria.
+                        landing pages built for businesses.
                     </p>
                 </div>
 
@@ -29,9 +28,8 @@ export const ServicesSection = () => {
                         API & Backend Systems
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                        Scalable REST APIs, payment integration (Paystack, Stripe),
-                        authentication systems, and database architecture for Nigerian
-                        startups and businesses.
+                        Scalable REST APIs, payment integration (Paystack, Flutterwave, Monnify and Stripe),
+                        authentication systems, and database architecture for businesses.
                     </p>
                 </div>
 

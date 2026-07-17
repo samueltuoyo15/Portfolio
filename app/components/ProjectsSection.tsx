@@ -12,11 +12,11 @@ const projects = [
         link: "https://example.com/kovana",
     },
     {
-        title: "Ever download",
+        title: "SaveIt",
         desc: "Download Any Video, Anywhere. Paste a link from YouTube, TikTok, Instagram, Twitter, Reddit, Twitch, Vimeo and more, download in seconds.",
         tech: ["Htmx", "Go", "Docker", "FFmpeg"],
         color: "bg-[#7f1d1d]",
-        link: "https://everdownload-production.up.railway.app/",
+        link: "https://saveit.samueltuoyo.com/",
     },
     {
         title: "AR Object Scanner",
@@ -85,7 +85,7 @@ export const ProjectsSection = () => {
                                         ? "/myhapprscr.png"
                                         : project.title === "Dokugen"
                                             ? `/Generate Readme - Language & Framework agnostic.png`
-                                            : project.title === "Ever download"
+                                            : project.title === "SaveIt"
                                                 ? "/everdownload.png"
                                                 : "/ar-object-scanner.png"
                                 }
