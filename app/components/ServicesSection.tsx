@@ -38,11 +38,11 @@ export const ServicesSection = () => {
                         <ShieldCheck className="w-6 h-6 text-green-600" />
                     </div>
                     <h3 className="font-bold text-gray-900 text-lg mb-2">
-                        Tech Consulting
+                        Virtual Tech Consulting
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                        Software architecture reviews, technical planning, and digital
-                        transformation consulting for businesses.
+                        Remote software architecture reviews, technical planning, and digital
+                        transformation consulting for businesses globally.
                     </p>
                 </div>
             </div>

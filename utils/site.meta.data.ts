@@ -3,7 +3,7 @@ const siteMetadata = {
   author: "Samuel Tuoyo",
   headerTitle: "Samuel Tuoyo",
   description:
-    "Samuel Tuoyo is a Full Stack Web Developer & Software Engineer based in Warri, Delta State, Nigeria. Offering professional website development, web app development, API development, and custom software services in Warri, Delta State, and across Nigeria. Specializing in NestJS, Next.js, React, Node.js and scalable backend systems.",
+    "Samuel Tuoyo is a Full Stack Web Developer & Software Engineer based in Warri, Delta State, Nigeria. Offering professional website development, web app development, API development, and custom software services in Warri, Delta State, and across Africa. Specializing in NestJS, Next.js, React, Node.js and scalable backend systems.",
   language: "en-us",
   theme: "system",
   siteUrl: "https://samueltuoyo.com",

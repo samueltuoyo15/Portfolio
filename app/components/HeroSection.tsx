@@ -64,7 +64,7 @@ export const HeroSection = () => {
                 <p className="max-w-xl text-base text-gray-600 mb-6 leading-normal font-light">
                     Full Stack Web Developer based in{" "}
                     <strong className="text-gray-800">Warri, Delta State, Nigeria</strong>, I build
-                    high-performance websites, web apps, and APIs for businesses and startups across Nigeria
+                    high-performance websites, web apps, and APIs for businesses and startups across Africa
                     and beyond.
                 </p>
 

@@ -4,14 +4,6 @@ import { Cpu } from "lucide-react";
 
 const projects = [
     {
-        title: "Kovana Care",
-        role: "Backend Engineer",
-        desc: "Healthcare Startup | Multi-tenant RBAC System",
-        tech: ["NestJS", "PostgreSQL", "Redis", "SSE"],
-        color: "bg-[#1E1E1E]",
-        link: "https://example.com/kovana",
-    },
-    {
         title: "SaveIt",
         desc: "Download Any Video, Anywhere. Paste a link from YouTube, TikTok, Instagram, Twitter, Reddit, Twitch, Vimeo and more, download in seconds.",
         tech: ["Htmx", "Go", "Docker", "FFmpeg"],

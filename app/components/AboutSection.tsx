@@ -16,7 +16,7 @@ export const AboutSection = () => {
             <div className="bg-[#Fdfcf8] p-6 md:p-12 rounded-sm shadow-xl border border-gray-200 relative rotate-1 max-w-5xl mx-auto">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/80 -rotate-2 shadow-sm"></div>
                 <div className="absolute top-10 -right-4 w-8 h-24 bg-yellow-200/80 rotate-3 shadow-sm"></div>
-                <div className="absolute -top-4 -right-2 md:-top-12 md:-right-12 w-40 h-40 md:w-52 md:h-52 bg-white p-2 md:p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 block transition hover:scale-110 hover:rotate-0 duration-300">
+                <div className="absolute -top-4 -right-2 md:-top-12 md:-right-4 lg:-right-12 w-40 h-40 md:w-52 md:h-52 bg-white p-2 md:p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 block transition hover:scale-110 hover:rotate-0 duration-300">
                     <div className="relative w-full h-full bg-gray-800 overflow-hidden filter sepia-[.2]">
                         <Image
                             src="/laptop.jpg"
@@ -47,14 +47,10 @@ export const AboutSection = () => {
 
                     <div className="w-full md:w-2/3 md:pr-16">
                         <p className="text-gray-700 leading-loose font-serif text-lg mb-6">
-                            Hi, My name is <strong className="text-black">Samuel Tuoyo</strong>.
-                            I&apos;m a Full Stack Software Developer with years of experience crafting
-                            high-performance digital systems.
+                            I believe great software isn&apos;t just about writing code; it&apos;s about solving real-world friction. I specialize in bridging the gap between clean, intuitive frontend experiences and robust, secure backend architectures.
                         </p>
                         <p className="text-gray-600 mb-6 font-sans">
-                            I focus on creating seamless APIs that solve real problems. When I&apos;m
-                            not coding, you&apos;ll catch me exploring new skills, skimming through
-                            insightful articles around software development, and occasionally watching movies.
+                           I help businesses and companies turn complex ideas into production-ready digital products. When I&apos;m not coding, you&apos;ll catch me exploring new skills, skimming through insightful developer articles, or consuming programming shorts.
                         </p>
 
                         <div
@@ -86,6 +82,10 @@ export const AboutSection = () => {
                                     <li className="flex items-center gap-3">
                                         <span className="text-green-600 font-bold text-xl">✓</span>{" "}
                                         Backend: Node.js (NestJS, Express), WebSockets, SSE
+                                    </li>
+                                    <li className="flex items-center gap-3">
+                                        <span className="text-green-600 font-bold text-xl">✓</span>{" "}
+                                        Agentic AI: Kiro, Antigravity, Codex
                                     </li>
                                     <li className="flex items-center gap-3">
                                         <span className="text-green-600 font-bold text-xl">✓</span>{" "}

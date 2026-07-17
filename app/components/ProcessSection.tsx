@@ -17,12 +17,12 @@ export const ProcessSection = () => {
                 {[
                     {
                         title: "Understand the requirements",
-                        desc: "I start by digging deep, and understanding the core domain logic before a single line of code is written.",
+                        desc: "I start by researching the complete scope. If it's a frontend feature, I research how it connects to the backend and overall architecture to fully understand the core domain logic before writing any code.",
                         icon: <Cpu className="w-6 h-6 text-gray-700" />,
                     },
                     {
                         title: "Architect Scalable Systems",
-                        desc: "This is where the fun begins. I design DB schemas (Postgres/MongoDB/Sqlite), and ensure data integrity.",
+                        desc: "Architecture is much more than just databases. I design robust systems by mapping out sequence flows, flowcharts, and system diagrams (often using Mermaid) to build a highly scalable architecture.",
                         icon: <Server className="w-6 h-6 text-gray-700" />,
                     },
                     {
@@ -32,7 +32,7 @@ export const ProcessSection = () => {
                     },
                     {
                         title: "Deploy & Observability",
-                        desc: "Dockerizing applications if neccessary, setting up CI/CD pipelines, and monitoring with Prometheus/Grafana for real-time insights.",
+                        desc: "Dockerizing applications if neccessary, setting up CI/CD pipelines, and monitoring for real-time insights.",
                         icon: <Rocket className="w-6 h-6 text-gray-700" />,
                     },
                 ].map((step, i) => (
