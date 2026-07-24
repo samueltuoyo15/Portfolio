@@ -24,7 +24,7 @@ export const ContactSection = () => {
                         business. Currently available for new projects.
                     </p>
                     <a
-                        href="mailto:samueltuoyo9082@gmail.com"
+                        href="mailto:hello@samueltuoyo.com"
                         className="inline-flex items-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-full hover:scale-105 transition"
                     >
                         Let&apos;s Talk <Rocket className="w-5 h-5" />

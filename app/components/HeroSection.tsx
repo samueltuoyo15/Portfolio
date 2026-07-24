@@ -44,7 +44,7 @@ export const HeroSection = () => {
                     </div>
 
                     <a
-                        href="mailto:samueltuoyo9082@gmail.com"
+                        href="mailto:hello@samueltuoyo.com"
                         className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 mt-4 md:mt-0"
                     >
                         <Send className="w-3 h-3" /> CONTACT ME

@@ -8,7 +8,7 @@ const siteMetadata = {
   theme: "system",
   siteUrl: "https://samueltuoyo.com",
   siteLogo: "/android-chrome-512x512.png",
-  email: "samueltuoyo9082@gmail.com",
+  email: "hello@samueltuoyo.com",
   github: "https://github.com/samueltuoyo15",
   twitter: "https://x.com/TuoyoS26091",
   youtube: "https://youtube.com/@samuel-tuoyo",

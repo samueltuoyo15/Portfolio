@@ -10,10 +10,10 @@ export const Footer = () => {
                     <span itemProp="addressRegion">Delta State</span>,{" "}
                     <span itemProp="addressCountry">Nigeria</span> ·{" "}
                     <a
-                        href="mailto:samueltuoyo9082@gmail.com"
+                        href="mailto:hello@samueltuoyo.com"
                         className="hover:text-gray-600 transition"
                     >
-                        samueltuoyo9082@gmail.com
+                        hello@samueltuoyo.com
                     </a>
                 </address>
                 <p>© {new Date().getFullYear()} Samuel Tuoyo. All rights reserved.</p>
