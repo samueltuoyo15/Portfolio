@@ -4,6 +4,21 @@ import { Cpu } from "lucide-react";
 
 const projects = [
     {
+        title: "SendLib",
+        desc: "Zero-Config Transactional Email API for Developers",
+        tech: ["Next.js", "Google OAuth", "MongoDB", "TypeScript"],
+        color: "bg-[#090d16]",
+        link: "https://sendlib.samueltuoyo.com/",
+        details: {
+            problem:
+                "Cloud hosts like Railway and Render block outbound SMTP ports, while platforms like Resend require strict domain DNS verification and have low free limits.",
+            solution:
+                "A zero-config REST API proxy that lets you send transactional emails (signup verifications, magic links, notifications) using your Gmail product account with no domain or DNS setup needed.",
+            impact:
+                "Sends transactional emails directly through your product's connected Google accounts via OAuth 2.0 (gmail.send scope). Up to 500 emails/day per connected account and 2,000/day per Workspace account, with REST API key management and 7-day analytics.",
+        },
+    },
+    {
         title: "SaveIt",
         desc: "Download Any Video, Anywhere. Paste a link from YouTube, TikTok, Instagram, Twitter, Reddit, Twitch, Vimeo and more, download in seconds.",
         tech: ["Htmx", "Go", "Docker", "FFmpeg"],
@@ -73,13 +88,15 @@ export const ProjectsSection = () => {
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src={
-                                    project.title === "Happr"
-                                        ? "/myhapprscr.png"
-                                        : project.title === "Dokugen"
-                                            ? `/Generate Readme - Language & Framework agnostic.png`
-                                            : project.title === "SaveIt"
-                                                ? "/everdownload.png"
-                                                : "/ar-object-scanner.png"
+                                    project.title === "SendLib"
+                                        ? "/sendlib.png"
+                                        : project.title === "Happr"
+                                            ? "/myhapprscr.png"
+                                            : project.title === "Dokugen"
+                                                ? `/Generate Readme - Language & Framework agnostic.png`
+                                                : project.title === "SaveIt"
+                                                    ? "/everdownload.png"
+                                                    : "/ar-object-scanner.png"
                                 }
                                 alt={project.title}
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500"

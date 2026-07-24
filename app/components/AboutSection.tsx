@@ -8,7 +8,7 @@ export const AboutSection = () => {
         <section id="about" className="w-full max-w-6xl px-4 relative">
             <div className="text-center mb-12">
                 <h2 className="font-serif text-4xl text-gray-900 mb-2 h-[1.2em]">
-                    <TypewriterText text={'"Wait a minute... who are you?"'} />
+                    <TypewriterText text={'"What I bring to the table..."'} />
                 </h2>
                 <div className="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
             </div>

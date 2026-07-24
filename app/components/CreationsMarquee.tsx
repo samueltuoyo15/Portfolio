@@ -13,10 +13,11 @@ const mobileScreenshots = [
 ];
 
 const desktopScreenshots = [
+    "/Screenshot 2026-07-24 192039",
     "/everdownload.png",
     "/image2.png",
     "/image.png",
-    "/Generate Readme - Language & Framework agnostic.png",
+    "/sendlib.png",
     "/ar-object-scanner.png",
 ];
 
