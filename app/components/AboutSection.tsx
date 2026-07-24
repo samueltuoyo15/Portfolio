@@ -16,7 +16,7 @@ export const AboutSection = () => {
             <div className="bg-[#Fdfcf8] p-6 md:p-12 rounded-sm shadow-xl border border-gray-200 relative rotate-1 max-w-5xl mx-auto">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/80 -rotate-2 shadow-sm"></div>
                 <div className="absolute top-10 -right-4 w-8 h-24 bg-yellow-200/80 rotate-3 shadow-sm"></div>
-                <div className="absolute -top-4 -right-2 md:-top-12 md:-right-4 lg:-right-12 w-40 h-40 md:w-52 md:h-52 bg-white p-2 md:p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 block transition hover:scale-110 hover:rotate-0 duration-300">
+                <div className="absolute -top-4 -right-2 md:-top-12 md:-right-4 lg:-right-8 w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 bg-white p-2 md:p-3 shadow-xl transform rotate-6 border border-gray-200 z-20 block transition hover:scale-110 hover:rotate-0 duration-300 pointer-events-auto">
                     <div className="relative w-full h-full bg-gray-800 overflow-hidden filter sepia-[.2]">
                         <Image
                             src="/laptop.jpg"
@@ -45,7 +45,7 @@ export const AboutSection = () => {
                         </div>
                     </div>
 
-                    <div className="w-full md:w-2/3 md:pr-16">
+                    <div className="w-full md:w-2/3 md:pr-28 lg:pr-36">
                         <p className="text-gray-700 leading-loose font-serif text-lg mb-6">
                             I believe great software isn&apos;t just about writing code; it&apos;s about solving real-world friction. I specialize in bridging the gap between clean, intuitive frontend experiences and robust, secure backend architectures.
                         </p>
