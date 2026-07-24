@@ -13,10 +13,9 @@ const mobileScreenshots = [
 ];
 
 const desktopScreenshots = [
-    "/Screenshot 2026-07-24 192039",
+    "/sendlib-dashboard.png",
     "/everdownload.png",
     "/image2.png",
-    "/image.png",
     "/sendlib.png",
     "/ar-object-scanner.png",
 ];
