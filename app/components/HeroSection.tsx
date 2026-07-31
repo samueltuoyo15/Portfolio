@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Hand, Briefcase, FolderOpen, Rocket, GitMerge, Star, User, Send } from "lucide-react";
+import { Hand, Briefcase, FolderOpen, Rocket, GitMerge, Star, User, Send, FileText } from "lucide-react";
 
 export const HeroSection = () => {
     const scrollToSection = (id: string) => {
@@ -43,29 +43,38 @@ export const HeroSection = () => {
                         />
                     </div>
 
-                    <a
-                        href="mailto:hello@samueltuoyo.com"
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 mt-4 md:mt-0"
-                    >
-                        <Send className="w-3 h-3" /> CONTACT ME
-                    </a>
+                    <div className="flex items-center gap-2 mt-4 md:mt-0">
+                        <a
+                            href="/resume.pdf"
+                            download="Samuel_Tuoyo_Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-full border border-gray-200 shadow-sm transition transform hover:-translate-y-0.5"
+                        >
+                            <FileText className="w-3 h-3 text-gray-700" /> RESUME
+                        </a>
+                        <a
+                            href="mailto:hello@samueltuoyo.com"
+                            className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5"
+                        >
+                            <Send className="w-3 h-3" /> CONTACT ME
+                        </a>
+                    </div>
                 </div>
 
                 <h1 className="font-serif text-3xl md:text-4xl text-gray-900 mb-1 tracking-tight flex items-center gap-2">
-                    Hi! <Hand className="animate-wave origin-bottom-right inline-block" />
-                    <span className="hidden md:inline-flex">,</span> I’m Samuel
+                    Hi! <Hand className="animate-wave origin-bottom-right inline-block" />, I’m Samuel
                 </h1>
 
                 <div className="flex items-center gap-2 text-gray-500 font-medium mb-4 text-sm">
                     <Briefcase className="w-4 h-4" />
-                    Full Stack Software Developer
+                    Full Stack & Product Engineer
                 </div>
 
                 <p className="max-w-xl text-base text-gray-600 mb-6 leading-normal font-light">
-                    Full Stack Web Developer based in{" "}
-                    <strong className="text-gray-800">Warri, Delta State, Nigeria</strong>, I build
-                    high-performance websites, web apps, and APIs for businesses and startups across Africa
-                    and beyond.
+                    Full Stack & Product Engineer based in{" "}
+                    <strong className="text-gray-800">Nigeria</strong>, I build
+                    high-performance web applications, scalable backend systems, and APIs for businesses and tech startups globally.
                 </p>
 
                 <div className="flex flex-wrap gap-2 w-full">
@@ -96,14 +105,18 @@ export const HeroSection = () => {
                             id: "about",
                         },
                     ].map((btn, idx) => (
-                        <button
+                        <a
                             key={idx}
-                            onClick={() => scrollToSection(btn.id)}
+                            href={`#${btn.id}`}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                scrollToSection(btn.id);
+                            }}
                             className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-gray-200 hover:border-gray-900 hover:bg-gray-50 transition text-xs font-bold text-gray-600 hover:text-gray-900 bg-white shadow-sm"
                         >
                             {btn.icon}
                             {btn.label}
-                        </button>
+                        </a>
                     ))}
                 </div>
             </div>

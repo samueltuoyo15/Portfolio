@@ -1,5 +1,3 @@
-"use client";
-
 import { Cpu } from "lucide-react";
 
 const projects = [
@@ -105,7 +103,7 @@ export const ProjectsSection = () => {
                         </div>
 
                         <div
-                            className={`p-6 flex flex-col justify-between h-auto min-h-56 ${project.color} text-white`}
+                            className={`p-6 flex flex-col justify-between flex-1 ${project.color} text-white`}
                         >
                             <div>
                                 <div className="flex justify-between items-start mb-2">

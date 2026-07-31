@@ -62,7 +62,7 @@ export const ArticlesMarquee = () => {
     };
 
     return (
-        <section className="w-full mb-24 overflow-hidden">
+        <section id="articles" className="w-full mb-24 overflow-hidden">
             {/* Header */}
             <div className="w-full max-w-6xl mx-auto px-4 mb-10 pt-8 flex items-end gap-4">
                 <h2 className="text-3xl md:text-5xl font-handwriting text-gray-400 rotate-1">

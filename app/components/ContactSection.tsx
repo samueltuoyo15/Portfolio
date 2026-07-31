@@ -2,7 +2,7 @@ import { Rocket } from "lucide-react";
 
 export const ContactSection = () => {
     return (
-        <section className="w-full max-w-4xl px-4 mb-20 text-center">
+        <section id="contact" className="w-full max-w-4xl px-4 mb-20 text-center">
             <div className="bg-[#111] text-white rounded-3xl p-12 relative overflow-hidden">
                 <div
                     className="absolute inset-0 opacity-20"
@@ -16,12 +16,12 @@ export const ContactSection = () => {
                         Need a reliable developer to work with?
                     </h2>
                     <p className="text-gray-400 mb-8 max-w-lg mx-auto">
-                        I&apos;m a web developer based in{" "}
+                        I&apos;m a{" "}
                         <span className="text-white font-semibold">
-                            Warri, Delta State
+                            Full Stack & Product Engineer
                         </span>
                         , let&apos;s build something robust, secure, and scalable for your
-                        business. Currently available for new projects.
+                        business. Currently available for new projects and roles.
                     </p>
                     <a
                         href="mailto:hello@samueltuoyo.com"

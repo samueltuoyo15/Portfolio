@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { TypewriterText } from "./TypewriterText";
 
@@ -83,10 +81,7 @@ export const AboutSection = () => {
                                         <span className="text-green-600 font-bold text-xl">✓</span>{" "}
                                         Backend: Node.js (NestJS, Express), WebSockets, SSE
                                     </li>
-                                    <li className="flex items-center gap-3">
-                                        <span className="text-green-600 font-bold text-xl">✓</span>{" "}
-                                        Agentic AI: Kiro, Antigravity, Codex
-                                    </li>
+                                
                                     <li className="flex items-center gap-3">
                                         <span className="text-green-600 font-bold text-xl">✓</span>{" "}
                                         Desktop: Electron JS

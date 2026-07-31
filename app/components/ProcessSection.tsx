@@ -1,5 +1,3 @@
-"use client";
-
 import { FileText, Cpu, Server, ShieldCheck, Rocket } from "lucide-react";
 import { TypewriterText } from "./TypewriterText";
 
