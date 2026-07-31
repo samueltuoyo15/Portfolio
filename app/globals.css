@@ -21,6 +21,12 @@ body {
   background-size: 24px 24px;
 }
 
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.92;
+  }
+}
+
 img {
   pointer-events: none;
   -webkit-user-drag: none;
@@ -73,7 +79,6 @@ img {
   }
 }
 
-/* ── Marquee utility classes ── */
 @layer utilities {
   .marquee-track {
     display: flex;
@@ -92,7 +97,6 @@ img {
     animation-play-state: paused;
   }
 
-  /* v4 compat shims */
   .aspect-3\/4 {
     aspect-ratio: 3 / 4;
   }

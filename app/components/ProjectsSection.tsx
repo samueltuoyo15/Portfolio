@@ -80,7 +80,7 @@ export const ProjectsSection = () => {
                 {otherProjects.map((project, i) => (
                     <div
                         key={i}
-                        className={`group relative rounded-3xl overflow-hidden shadow-lg min-h-[30rem] h-full flex flex-col bg-white border border-gray-100 transition hover:-translate-y-1`}
+                        className="group relative rounded-3xl overflow-hidden shadow-lg min-h-[30rem] h-full flex flex-col bg-white border border-gray-100 transition hover:-translate-y-1"
                     >
                         <div className="h-64 shrink-0 relative overflow-hidden">
                             {/* eslint-disable-next-line @next/next/no-img-element */}

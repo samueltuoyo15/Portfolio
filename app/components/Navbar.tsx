@@ -37,15 +37,7 @@ export const Navbar = () => {
                     </span>
                 </a>
 
-                {/* Section Navigation for Users & Search Engine Sitelinks */}
-                <div className="hidden lg:flex items-center gap-6 text-xs font-semibold text-gray-600">
-                    <a href="#innovations" className="hover:text-gray-900 transition">Projects</a>
-                    <a href="#landing-pages" className="hover:text-gray-900 transition">Landing Pages</a>
-                    <a href="#articles" className="hover:text-gray-900 transition">Articles</a>
-                    <a href="#process" className="hover:text-gray-900 transition">Process</a>
-                    <a href="#about" className="hover:text-gray-900 transition">About</a>
-                    <a href="#contact" className="hover:text-gray-900 transition">Contact</a>
-                </div>
+
 
                 <div className="flex items-center gap-2">
                     <div className="flex gap-1.5 md:gap-2">

@@ -63,7 +63,7 @@ export const HeroSection = () => {
                 </div>
 
                 <h1 className="font-serif text-3xl md:text-4xl text-gray-900 mb-1 tracking-tight flex items-center gap-2">
-                    Hi! <Hand className="animate-wave origin-bottom-right inline-block" />, I’m Samuel
+                    Hey! <Hand className="animate-wave origin-bottom-right inline-block" />, I’m Samuel
                 </h1>
 
                 <div className="flex items-center gap-2 text-gray-500 font-medium mb-4 text-sm">
