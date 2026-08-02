@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
+import { SkeletonImage } from "./SkeletonImage";
 
 const mobileScreenshots = [
     "/ever-download-mobile.png",
@@ -20,76 +21,57 @@ const desktopScreenshots = [
     "/ar-object-scanner.png",
 ];
 
-function ScrollRow({
+function MarqueeRow({
     images,
-    cardClass,
+    cardHeightClass,
+    speedClass = "marquee-track",
 }: {
     images: string[];
-    cardClass?: string;
+    cardHeightClass: string;
+    speedClass?: string;
 }) {
-    const rowRef = useRef<HTMLDivElement>(null);
-    const isDragging = useRef(false);
-    const startX = useRef(0);
-    const scrollLeft = useRef(0);
+    const [isPaused, setIsPaused] = useState(false);
 
-    const onMouseDown = (e: React.MouseEvent) => {
-        if (!rowRef.current) return;
-        isDragging.current = true;
-        startX.current = e.pageX - rowRef.current.offsetLeft;
-        scrollLeft.current = rowRef.current.scrollLeft;
-        rowRef.current.style.cursor = "grabbing";
-    };
-
-    const onMouseLeave = () => {
-        isDragging.current = false;
-        if (rowRef.current) rowRef.current.style.cursor = "grab";
-    };
-
-    const onMouseUp = () => {
-        isDragging.current = false;
-        if (rowRef.current) rowRef.current.style.cursor = "grab";
-    };
-
-    const onMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging.current || !rowRef.current) return;
-        e.preventDefault();
-        const x = e.pageX - rowRef.current.offsetLeft;
-        const walk = (x - startX.current) * 1.5;
-        rowRef.current.scrollLeft = scrollLeft.current - walk;
-    };
+    // Quadruple images to guarantee seamless continuous scrolling
+    const displayImages = [...images, ...images, ...images, ...images];
 
     return (
-        <div className="mb-10">
-            <div className="relative w-full">
-                <div className="absolute left-0 top-0 h-full w-12 md:w-24 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 h-full w-12 md:w-24 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+        <div className="mb-10 relative w-full">
+            {/* Edge fade overlays */}
+            <div className="absolute left-0 top-0 h-full w-12 md:w-28 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 h-full w-12 md:w-28 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
+
+            <div
+                className="overflow-hidden select-none cursor-pointer"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setIsPaused(false)}
+                onTouchCancel={() => setIsPaused(false)}
+                onMouseDown={() => setIsPaused(true)}
+                onMouseUp={() => setIsPaused(false)}
+            >
                 <div
-                    ref={rowRef}
-                    className="overflow-x-auto cursor-grab select-none"
-                    style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
-                    onMouseDown={onMouseDown}
-                    onMouseLeave={onMouseLeave}
-                    onMouseUp={onMouseUp}
-                    onMouseMove={onMouseMove}
+                    className={`${speedClass} gap-6 pb-4 px-4`}
+                    style={{
+                        animationPlayState: isPaused ? "paused" : "running",
+                    }}
                 >
-                    <div className="flex gap-5 pb-4 px-4 w-max">
-                        {images.map((src, idx) => (
-                            <div
-                                key={idx}
-                                className={`relative shrink-0 w-auto rounded-2xl overflow-hidden shadow-[0_16px_40px_-10px_rgba(0,0,0,0.25)] border-8 border-white bg-gray-100 group transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_24px_50px_-10px_rgba(0,0,0,0.35)] ${cardClass ?? ""}`}
-                            >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                    src={src}
-                                    alt={`Creation ${idx + 1}`}
-                                    className="h-full w-auto object-cover pointer-events-none"
-                                    draggable={false}
-                                    loading="lazy"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                            </div>
-                        ))}
-                    </div>
+                    {displayImages.map((src, idx) => (
+                        <div
+                            key={idx}
+                            className={`relative shrink-0 rounded-2xl overflow-hidden shadow-[0_12px_36px_-8px_rgba(0,0,0,0.18)] border-4 md:border-8 border-white bg-gray-200 group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_-8px_rgba(0,0,0,0.28)] ${cardHeightClass}`}
+                        >
+                            <SkeletonImage
+                                src={src}
+                                alt={`Creation Snapshot ${idx + 1}`}
+                                containerClassName="h-full w-full"
+                                className="h-full w-auto object-cover pointer-events-none"
+                                draggable={false}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
@@ -99,9 +81,9 @@ function ScrollRow({
 export const CreationsMarquee = () => {
     return (
         <section className="w-full mb-24 overflow-hidden">
-            <div className="w-full max-w-6xl mx-auto px-4 mb-12 pt-8">
+            <div className="w-full max-w-6xl mx-auto px-4 mb-10 pt-8">
                 <div className="relative inline-block">
-                    <h2 className="text-4xl md:text-6xl font-handwriting text-gray-400 -rotate-2">
+                    <h2 className="text-4xl md:text-6xl font-handwriting text-gray-500 -rotate-2">
                         couple snapshots of my creations
                         <svg
                             className="absolute -bottom-10 -right-20 w-24 h-24 text-gray-300 rotate-12 hidden md:block"
@@ -125,16 +107,18 @@ export const CreationsMarquee = () => {
                 </div>
             </div>
 
-            {/* Mobile screenshots row */}
-            <ScrollRow
+            {/* Mobile snapshots row - moving left */}
+            <MarqueeRow
                 images={mobileScreenshots}
-                cardClass="h-[28rem] md:h-[36rem]"
+                cardHeightClass="h-[24rem] sm:h-[30rem] md:h-[34rem] w-auto"
+                speedClass="marquee-track"
             />
 
-            {/* Desktop screenshots row */}
-            <ScrollRow
+            {/* Desktop snapshots row - moving left slowly */}
+            <MarqueeRow
                 images={desktopScreenshots}
-                cardClass="h-52 md:h-72"
+                cardHeightClass="h-48 sm:h-64 md:h-72 w-auto"
+                speedClass="marquee-track-slow"
             />
         </section>
     );

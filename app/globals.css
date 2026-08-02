@@ -79,6 +79,15 @@ img {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @layer utilities {
   .marquee-track {
     display: flex;
@@ -95,6 +104,10 @@ img {
   .marquee-track:hover,
   .marquee-track-slow:hover {
     animation-play-state: paused;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 1.8s infinite;
   }
 
   .aspect-3\/4 {
@@ -116,5 +129,23 @@ img {
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
   }
 }

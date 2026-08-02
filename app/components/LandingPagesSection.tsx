@@ -1,4 +1,5 @@
 import { Rocket } from "lucide-react";
+import { SkeletonImage } from "./SkeletonImage";
 
 export const LandingPagesSection = () => {
     return (
@@ -33,14 +34,13 @@ export const LandingPagesSection = () => {
                         className="group relative rounded-3xl overflow-hidden shadow-lg bg-white border border-gray-100 transition hover:-translate-y-1 hover:shadow-xl"
                     >
                         <div className="relative h-56 overflow-hidden bg-gray-100">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <SkeletonImage
                                 src={page.src}
                                 alt={page.title}
-                                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                                loading="lazy"
+                                containerClassName="w-full h-full"
+                                className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
                             />
-                            <div className="absolute inset-0 bg-black/10" />
+                            <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                         </div>
                         <div className="p-5 bg-[#1a1a2e] text-white flex flex-col gap-3">
                             <div className="flex justify-between items-start">
