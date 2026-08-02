@@ -43,21 +43,21 @@ export const HeroSection = () => {
                         />
                     </div>
 
-                    <div className="flex items-center gap-2 mt-4 md:mt-0">
+                    <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                         <a
                             href="/resume.pdf"
                             download="Samuel_Tuoyo_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold px-3.5 py-2 rounded-full border border-gray-200 shadow-sm transition transform hover:-translate-y-0.5"
+                            className="flex items-center gap-1 sm:gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full border border-gray-200 shadow-sm transition transform hover:-translate-y-0.5 whitespace-nowrap"
                         >
-                            <FileText className="w-3 h-3 text-gray-700" /> RESUME
+                            <FileText className="w-3 h-3 text-gray-700 shrink-0" /> RESUME
                         </a>
                         <a
                             href="mailto:hello@samueltuoyo.com"
-                            className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5"
+                            className="flex items-center gap-1 sm:gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 whitespace-nowrap"
                         >
-                            <Send className="w-3 h-3" /> CONTACT ME
+                            <Send className="w-3 h-3 shrink-0" /> CONTACT ME
                         </a>
                     </div>
                 </div>
