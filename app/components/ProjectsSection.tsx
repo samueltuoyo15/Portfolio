@@ -71,7 +71,7 @@ const projects: Project[] = [
         },
     },
     {
-        title: "myhappr",
+        title: "Myhappr",
         role: "Co-Architect",
         desc: "Fintech Creator-Support Infrastructure for African Creators.",
         tech: ["Flutterwave", "NestJS", "Prisma"],
