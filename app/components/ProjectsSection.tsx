@@ -71,7 +71,7 @@ const projects: Project[] = [
         },
     },
     {
-        title: "Happr",
+        title: "myhappr",
         role: "Co-Architect",
         desc: "Fintech Creator-Support Infrastructure for African Creators.",
         tech: ["Flutterwave", "NestJS", "Prisma"],
@@ -106,16 +106,14 @@ export const ProjectsSection = () => {
                         key={i}
                         className="group relative rounded-3xl overflow-hidden shadow-lg flex flex-col bg-white border border-gray-100 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
-                        {/* Full edge-to-edge thumbnail with Skeleton Image */}
-                        <div className="h-64 sm:h-72 w-full relative overflow-hidden bg-gray-900 border-b border-gray-100">
+                        {/* Thumbnail container displaying full image properly */}
+                        <div className="h-64 sm:h-72 w-full relative overflow-hidden bg-gray-100 border-b border-gray-100 flex items-center justify-center p-2">
                             <SkeletonImage
                                 src={project.image}
                                 alt={project.title}
-                                dark
                                 containerClassName="w-full h-full"
-                                className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                                className="w-full h-full object-contain object-top group-hover:scale-[1.02] transition duration-500 rounded-xl"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                         </div>
 
                         <div
@@ -180,37 +178,37 @@ export const ProjectsSection = () => {
                 ))}
             </div>
 
-            {/* Premium Case Study Modal */}
+            {/* Clean Portfolio-Themed Case Study Modal */}
             {selectedProject && selectedProject.details && (
                 <div
-                    className="fixed inset-0 bg-black/75 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+                    className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
                     onClick={() => setSelectedProject(null)}
                 >
                     <div
-                        className="bg-[#0E131F] text-white rounded-3xl max-w-3xl w-full max-h-[88vh] flex flex-col border border-white/10 shadow-2xl overflow-hidden relative my-auto"
+                        className="bg-white text-gray-900 rounded-3xl max-w-3xl w-full max-h-[88vh] flex flex-col border border-gray-200 shadow-2xl overflow-hidden relative my-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Modal Header */}
-                        <div className="p-6 pb-4 border-b border-white/10 flex items-start justify-between bg-[#151D2F] shrink-0">
+                        <div className="px-6 py-5 border-b border-gray-100 bg-white flex items-center justify-between shrink-0">
                             <div>
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-950/80 border border-emerald-500/30 px-3 py-0.5 rounded-full">
+                                <div className="flex items-center gap-2 mb-1.5">
+                                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 border border-blue-100 px-3 py-0.5 rounded-full">
                                         <BookOpen className="w-3 h-3" /> Case Study
                                     </span>
                                     {selectedProject.role && (
-                                        <span className="text-xs font-semibold text-gray-400 bg-white/5 px-2.5 py-0.5 rounded-full">
+                                        <span className="text-xs font-semibold text-gray-600 bg-gray-100 px-2.5 py-0.5 rounded-full">
                                             {selectedProject.role}
                                         </span>
                                     )}
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+                                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 tracking-tight">
                                     {selectedProject.title}
                                 </h2>
                             </div>
 
                             <button
                                 onClick={() => setSelectedProject(null)}
-                                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition"
+                                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition"
                                 aria-label="Close modal"
                             >
                                 <X className="w-5 h-5" />
@@ -218,53 +216,54 @@ export const ProjectsSection = () => {
                         </div>
 
                         {/* Modal Body */}
-                        <div className="overflow-y-auto custom-scrollbar p-6 sm:p-8 space-y-6 flex-1">
-                            {/* Browser Mockup Preview */}
-                            <div className="rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-xl">
-                                <div className="bg-[#1A2234] px-4 py-2.5 border-b border-white/10 flex items-center gap-3">
+                        <div className="overflow-y-auto custom-scrollbar p-6 sm:p-8 space-y-6 flex-1 bg-[#FAFAFA]">
+                            {/* Browser Mockup Preview displaying full screenshot */}
+                            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
+                                <div className="bg-gray-100 px-4 py-2.5 border-b border-gray-200 flex items-center gap-3">
                                     <div className="flex gap-1.5">
-                                        <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                                        <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
-                                        <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
+                                        <span className="w-3 h-3 rounded-full bg-red-400 inline-block" />
+                                        <span className="w-3 h-3 rounded-full bg-yellow-400 inline-block" />
+                                        <span className="w-3 h-3 rounded-full bg-green-400 inline-block" />
                                     </div>
-                                    <div className="bg-black/40 rounded-full px-3 py-1 text-[11px] text-gray-400 font-mono flex-1 text-center truncate">
+                                    <div className="bg-white border border-gray-200 rounded-full px-3 py-1 text-[11px] text-gray-500 font-mono flex-1 text-center truncate">
                                         {selectedProject.link || selectedProject.title.toLowerCase() + ".com"}
                                     </div>
                                 </div>
-                                <SkeletonImage
-                                    src={selectedProject.image}
-                                    alt={selectedProject.title}
-                                    dark
-                                    containerClassName="w-full h-56 sm:h-72"
-                                    className="w-full h-full object-cover object-top"
-                                />
+                                <div className="p-3 sm:p-4 bg-gray-50 flex items-center justify-center">
+                                    <SkeletonImage
+                                        src={selectedProject.image}
+                                        alt={selectedProject.title}
+                                        containerClassName="w-full max-h-80 rounded-lg shadow-sm"
+                                        className="w-full h-full max-h-80 object-contain object-top rounded-lg"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Case Study Sections */}
-                            <div className="space-y-4 text-sm text-gray-200">
-                                <div className="bg-[#151D2F] p-5 rounded-2xl border border-amber-500/20 shadow-sm">
-                                    <h3 className="font-bold text-amber-400 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
+                            {/* Case Study Breakdown */}
+                            <div className="space-y-4 text-sm">
+                                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                                    <h3 className="font-bold text-amber-600 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
                                         <AlertCircle className="w-4 h-4" /> The Problem
                                     </h3>
-                                    <p className="leading-relaxed font-light text-gray-300">
+                                    <p className="leading-relaxed font-light text-gray-700">
                                         {selectedProject.details.problem}
                                     </p>
                                 </div>
 
-                                <div className="bg-[#151D2F] p-5 rounded-2xl border border-blue-500/20 shadow-sm">
-                                    <h3 className="font-bold text-blue-400 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
+                                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                                    <h3 className="font-bold text-blue-600 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
                                         <CheckCircle2 className="w-4 h-4" /> The Solution
                                     </h3>
-                                    <p className="leading-relaxed font-light text-gray-300">
+                                    <p className="leading-relaxed font-light text-gray-700">
                                         {selectedProject.details.solution}
                                     </p>
                                 </div>
 
-                                <div className="bg-[#151D2F] p-5 rounded-2xl border border-emerald-500/20 shadow-sm">
-                                    <h3 className="font-bold text-emerald-400 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
+                                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                                    <h3 className="font-bold text-emerald-600 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
                                         <TrendingUp className="w-4 h-4" /> Measured Impact & Results
                                     </h3>
-                                    <p className="leading-relaxed font-light text-gray-300">
+                                    <p className="leading-relaxed font-light text-gray-700">
                                         {selectedProject.details.impact}
                                     </p>
                                 </div>
@@ -272,12 +271,12 @@ export const ProjectsSection = () => {
                         </div>
 
                         {/* Modal Footer */}
-                        <div className="p-6 border-t border-white/10 bg-[#151D2F] flex flex-wrap items-center justify-between gap-4 shrink-0">
+                        <div className="px-6 py-4 border-t border-gray-200 bg-white flex flex-wrap items-center justify-between gap-4 shrink-0">
                             <div className="flex flex-wrap gap-2">
                                 {selectedProject.tech.map((t) => (
                                     <span
                                         key={t}
-                                        className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-xs font-semibold text-gray-200"
+                                        className="px-3 py-1 bg-gray-100 border border-gray-200 rounded-full text-xs font-semibold text-gray-700"
                                     >
                                         {t}
                                     </span>
@@ -289,7 +288,7 @@ export const ProjectsSection = () => {
                                     href={selectedProject.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-5 py-2.5 rounded-full transition shadow-lg hover:shadow-emerald-500/20"
+                                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs px-6 py-2.5 rounded-full transition shadow-md hover:shadow-lg"
                                 >
                                     View Live App
                                     <ExternalLink className="w-4 h-4" />
