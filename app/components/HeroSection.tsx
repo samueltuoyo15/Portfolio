@@ -18,7 +18,7 @@ export const HeroSection = () => {
                 style={{ opacity: 0.8 }}
             ></div>
             <div
-                className="absolute -top-32 right-8 md:right-20 w-0.5 h-32 bg-gray-800 z-0"
+                className="absolute -top-32 right-8 md:right-12 w-0.5 h-32 bg-gray-800 z-0"
                 style={{ opacity: 0.8 }}
             ></div>
 
