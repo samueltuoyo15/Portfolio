@@ -107,7 +107,7 @@ export const ProjectsSection = () => {
                         className="group relative rounded-3xl overflow-hidden shadow-lg flex flex-col bg-white border border-gray-100 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
                         {/* Thumbnail container displaying edge-to-edge full image cover */}
-                        <div className="h-64 sm:h-72 w-full relative overflow-hidden bg-gray-900 border-b border-gray-100">
+                        <div className="h-48 sm:h-60 md:h-64 w-full relative overflow-hidden bg-gray-900 border-b border-gray-100">
                             <SkeletonImage
                                 src={project.image}
                                 alt={project.title}
@@ -119,9 +119,9 @@ export const ProjectsSection = () => {
                         </div>
 
                         <div
-                            className={`p-6 flex flex-col justify-between flex-1 ${project.color} text-white`}
+                            className={`p-5 sm:p-6 flex flex-col justify-between flex-1 ${project.color} text-white`}
                         >
-                            <div className="mb-6">
+                            <div className="mb-4 sm:mb-5">
                                 <div className="flex justify-between items-start mb-2">
                                     <h3 className="text-2xl font-bold font-serif">{project.title}</h3>
                                     <div className="p-1.5 bg-white/10 rounded-full backdrop-blur-md">
