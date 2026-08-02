@@ -106,18 +106,14 @@ export const ProjectsSection = () => {
                         key={i}
                         className="group relative rounded-3xl overflow-hidden shadow-lg flex flex-col bg-white border border-gray-100 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
-                        {/* Thumbnail container */}
+                        {/* Thumbnail container displaying edge-to-edge full image cover */}
                         <div className="h-64 sm:h-72 w-full relative overflow-hidden bg-gray-900 border-b border-gray-100">
                             <SkeletonImage
                                 src={project.image}
                                 alt={project.title}
                                 dark
                                 containerClassName="w-full h-full"
-                                className={`w-full h-full group-hover:scale-105 transition duration-500 ${
-                                    project.title === "Myhappr"
-                                        ? "object-contain object-top bg-[#100c1e] p-2"
-                                        : "object-cover object-top"
-                                }`}
+                                className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                         </div>

@@ -39,7 +39,7 @@ export const Navbar = () => {
                 </a>
 
                 <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-                    <div className="flex gap-1 sm:gap-1.5 md:gap-2">
+                    <div className="flex gap-1.5 md:gap-2 items-center">
                         <SocialIcon
                             url="https://linkedin.com/in/samueltuoyo"
                             target="_blank"
@@ -68,12 +68,15 @@ export const Navbar = () => {
                             style={{ height: 32, width: 32 }}
                             className="hover:scale-110 transition-transform"
                         />
-                        <SocialIcon
-                            url="https://medium.com/@samueltuoyo9082"
-                            target="_blank"
-                            style={{ height: 32, width: 32 }}
-                            className="hover:scale-110 transition-transform"
-                        />
+                        {/* Medium icon hidden on mobile, visible on desktop */}
+                        <div className="hidden md:inline-block">
+                            <SocialIcon
+                                url="https://medium.com/@samueltuoyo9082"
+                                target="_blank"
+                                style={{ height: 32, width: 32 }}
+                                className="hover:scale-110 transition-transform"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

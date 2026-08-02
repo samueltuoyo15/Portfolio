@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface SkeletonImageProps {
     src: string;
@@ -22,6 +22,13 @@ export const SkeletonImage = ({
     dark = false,
 }: SkeletonImageProps) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (imgRef.current && imgRef.current.complete) {
+            setIsLoaded(true);
+        }
+    }, [src]);
 
     return (
         <div className={`relative overflow-hidden ${containerClassName}`}>
@@ -43,12 +50,14 @@ export const SkeletonImage = ({
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+                ref={imgRef}
                 src={src}
                 alt={alt}
                 loading={loading}
                 draggable={draggable}
                 onLoad={() => setIsLoaded(true)}
-                className={`${className} transition-opacity duration-500 ${
+                onError={() => setIsLoaded(true)}
+                className={`${className} transition-opacity duration-300 ${
                     isLoaded ? "opacity-100" : "opacity-0"
                 }`}
             />
