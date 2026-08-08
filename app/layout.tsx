@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     "SendLib",
     "Dokugen",
     "Happr",
+    "Portfolio",
+    "Software Development",
+    "Web Development",
   ],
   icons: {
     icon: "/favicon.ico",
@@ -57,7 +60,7 @@ export const metadata: Metadata = {
     url: siteMetadata.siteUrl,
     siteName: siteMetadata.title,
     locale: "en_US",
-    type: "profile",
+    type: "website",
     images: [
       {
         url: `${siteMetadata.siteUrl}/android-chrome-512x512.png`,
@@ -200,7 +203,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href={siteMetadata.siteUrl} />
         <meta name="theme-color" content="#FAFAFA" />
         <script
           type="application/ld+json"

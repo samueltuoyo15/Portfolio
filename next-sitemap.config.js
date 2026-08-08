@@ -2,22 +2,32 @@
 const config = {
   siteUrl: "https://samueltuoyo.com",
   generateRobotsTxt: true,
+  generateIndexSitemap: false,
   changefreq: "weekly",
   priority: 1.0,
-  sitemapSize: 5000,
+  sitemapSize: 7000,
+  exclude: [],
   robotsTxtOptions: {
     policies: [
-      { userAgent: "*", allow: "/" },
-      { userAgent: "Googlebot", allow: "/" },
-      { userAgent: "Bingbot", allow: "/" },
+      { 
+        userAgent: "*", 
+        allow: "/",
+        disallow: [] 
+      },
     ],
     additionalSitemaps: [
       "https://samueltuoyo.com/sitemap.xml",
     ],
   },
-  additionalPaths: async (config) => [
-    await config.transform(config, "/"),
-  ],
+  transform: async (config, path) => {
+    return {
+      loc: path,
+      changefreq: "weekly",
+      priority: 1.0,
+      lastmod: new Date().toISOString(),
+      alternateRefs: [],
+    };
+  },
 };
 
 export default config;

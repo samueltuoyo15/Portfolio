@@ -13,6 +13,23 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
   },
 
+  // Force trailing slashes for consistency
+  trailingSlash: false,
+
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow',
+          },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       {
