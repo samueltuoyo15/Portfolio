@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SkeletonImage } from "./SkeletonImage";
 
 const mobileScreenshots = [
@@ -14,65 +14,129 @@ const mobileScreenshots = [
 ];
 
 const desktopScreenshots = [
-    "/sendlib-dashboard.png",
-    "/everdownload.png",
-    "/image2.png",
-    "/sendlib.png",
+    "/Screenshot (323).png",
+    "/Screenshot 2026-03-31 115354.png",
     "/ar-object-scanner.png",
 ];
 
 function MarqueeRow({
     images,
     cardHeightClass,
-    speedClass = "marquee-track",
+    speed = 0.8,
+    sizes,
+    priority = false,
 }: {
     images: string[];
     cardHeightClass: string;
-    speedClass?: string;
+    speed?: number;
+    sizes: string;
+    priority?: boolean;
 }) {
-    const [isPaused, setIsPaused] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [isInteracting, setIsInteracting] = useState(false);
+    const isDraggingRef = useRef(false);
+    const startXRef = useRef(0);
+    const scrollStartRef = useRef(0);
 
-    // Quadruple images to guarantee seamless continuous scrolling
     const displayImages = [...images, ...images, ...images, ...images];
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        // Set initial scroll offset so user can scroll both left and right immediately
+        if (container.scrollLeft === 0 && container.scrollWidth > 0) {
+            container.scrollLeft = container.scrollWidth / 4;
+        }
+
+        let animationFrameId: number;
+
+        const step = () => {
+            if (!isInteracting && container) {
+                container.scrollLeft += speed;
+                const quarterWidth = container.scrollWidth / 4;
+                if (container.scrollLeft >= quarterWidth * 3) {
+                    container.scrollLeft -= quarterWidth;
+                }
+            }
+            animationFrameId = requestAnimationFrame(step);
+        };
+
+        animationFrameId = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(animationFrameId);
+    }, [isInteracting, speed]);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        if (isDraggingRef.current) {
+            const dx = e.pageX - startXRef.current;
+            container.scrollLeft = scrollStartRef.current - dx;
+        } else if (e.movementX !== 0) {
+            container.scrollLeft -= e.movementX * 1.5;
+        }
+
+        const quarterWidth = container.scrollWidth / 4;
+        if (container.scrollLeft >= quarterWidth * 3) {
+            container.scrollLeft -= quarterWidth;
+        } else if (container.scrollLeft <= quarterWidth / 2) {
+            container.scrollLeft += quarterWidth;
+        }
+    };
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        isDraggingRef.current = true;
+        startXRef.current = e.pageX;
+        if (containerRef.current) {
+            scrollStartRef.current = containerRef.current.scrollLeft;
+        }
+    };
+
+    const handleMouseUp = () => {
+        isDraggingRef.current = false;
+    };
 
     return (
         <div className="mb-10 relative w-full">
-            {/* Edge fade overlays */}
             <div className="absolute left-0 top-0 h-full w-12 md:w-28 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 h-full w-12 md:w-28 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
 
             <div
-                className="overflow-hidden select-none cursor-pointer"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-                onTouchStart={() => setIsPaused(true)}
-                onTouchEnd={() => setIsPaused(false)}
-                onTouchCancel={() => setIsPaused(false)}
-                onMouseDown={() => setIsPaused(true)}
-                onMouseUp={() => setIsPaused(false)}
+                ref={containerRef}
+                className="overflow-x-auto no-scrollbar select-none cursor-grab active:cursor-grabbing flex gap-6 pb-4 px-4"
+                onMouseEnter={() => setIsInteracting(true)}
+                onMouseLeave={() => {
+                    setIsInteracting(false);
+                    isDraggingRef.current = false;
+                }}
+                onMouseMove={handleMouseMove}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onTouchStart={() => setIsInteracting(true)}
+                onTouchEnd={() => setIsInteracting(false)}
             >
-                <div
-                    className={`${speedClass} gap-6 pb-4 px-4`}
-                    style={{
-                        animationPlayState: isPaused ? "paused" : "running",
-                    }}
-                >
-                    {displayImages.map((src, idx) => (
-                        <div
-                            key={idx}
-                            className={`relative shrink-0 rounded-2xl overflow-hidden shadow-[0_12px_36px_-8px_rgba(0,0,0,0.18)] border-4 md:border-8 border-white bg-gray-200 group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_-8px_rgba(0,0,0,0.28)] ${cardHeightClass}`}
-                        >
-                            <SkeletonImage
-                                src={src}
-                                alt={`Creation Snapshot ${idx + 1}`}
-                                containerClassName="h-full w-full"
-                                className="h-full w-auto object-cover pointer-events-none"
-                                draggable={false}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                        </div>
-                    ))}
-                </div>
+                {displayImages.map((src, idx) => (
+                    <div
+                        key={idx}
+                        className={`relative shrink-0 rounded-2xl overflow-hidden shadow-[0_12px_36px_-8px_rgba(0,0,0,0.18)] border-4 md:border-8 border-white bg-gray-200 group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_-8px_rgba(0,0,0,0.28)] ${cardHeightClass}`}
+                    >
+                        <SkeletonImage
+                            src={src}
+                            alt={`Creation Snapshot ${idx + 1}`}
+                            containerClassName="h-full w-full"
+                            className="h-full w-full object-cover pointer-events-none"
+                            draggable={false}
+                            sizes={sizes}
+                            priority={
+                                priority &&
+                                (idx < 2 ||
+                                    (idx >= images.length && idx < images.length + 2))
+                            }
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                    </div>
+                ))}
             </div>
         </div>
     );
@@ -110,15 +174,19 @@ export const CreationsMarquee = () => {
             {/* Mobile snapshots row - moving left */}
             <MarqueeRow
                 images={mobileScreenshots}
-                cardHeightClass="h-[24rem] sm:h-[30rem] md:h-[34rem] w-auto"
-                speedClass="marquee-track"
+                cardHeightClass="h-[24rem] w-[13.5rem] sm:h-[30rem] sm:w-[17rem] md:h-[34rem] md:w-[19rem]"
+                speed={0.8}
+                sizes="(max-width: 639px) 216px, (max-width: 767px) 272px, 304px"
+                priority
             />
 
             {/* Desktop snapshots row - moving left slowly */}
             <MarqueeRow
                 images={desktopScreenshots}
-                cardHeightClass="h-48 sm:h-64 md:h-72 w-auto"
-                speedClass="marquee-track-slow"
+                cardHeightClass="h-48 w-[21rem] sm:h-64 sm:w-[28rem] md:h-72 md:w-[32rem]"
+                speed={0.5}
+                sizes="(max-width: 639px) 336px, (max-width: 767px) 448px, 512px"
+                priority
             />
         </section>
     );

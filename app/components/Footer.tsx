@@ -2,7 +2,7 @@ export const Footer = () => {
     return (
         <footer className="w-full py-8 text-center text-gray-500 text-sm font-medium">
             <address className="not-italic mb-2 text-xs text-gray-400">
-                Samuel Tuoyo · Full Stack & Product Engineer ·{" "}
+                Samuel Tuoyo · Full Stack Engineer ·{" "}
                 <span itemProp="addressCountry">Nigeria</span> ·{" "}
                 <a
                     href="mailto:hello@samueltuoyo.com"

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 interface SkeletonImageProps {
     src: string;
@@ -10,6 +11,9 @@ interface SkeletonImageProps {
     loading?: "lazy" | "eager";
     draggable?: boolean;
     dark?: boolean;
+    sizes?: string;
+    priority?: boolean;
+    quality?: number;
 }
 
 export const SkeletonImage = ({
@@ -20,15 +24,23 @@ export const SkeletonImage = ({
     loading = "lazy",
     draggable = false,
     dark = false,
+    sizes = "(max-width: 1024px) 100vw, 50vw",
+    priority = false,
+    quality = 85,
 }: SkeletonImageProps) => {
     const [isLoaded, setIsLoaded] = useState(false);
-    const imgRef = useRef<HTMLImageElement>(null);
+    const isMounted = useRef(false);
 
     useEffect(() => {
-        if (imgRef.current && imgRef.current.complete) {
-            setIsLoaded(true);
-        }
-    }, [src]);
+        isMounted.current = true;
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    const markLoaded = () => {
+        if (isMounted.current) setIsLoaded(true);
+    };
 
     return (
         <div className={`relative overflow-hidden ${containerClassName}`}>
@@ -48,15 +60,17 @@ export const SkeletonImage = ({
                 </div>
             )}
 
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                ref={imgRef}
+            <Image
                 src={src}
                 alt={alt}
-                loading={loading}
+                fill
+                sizes={sizes}
+                quality={quality}
+                priority={priority}
+                loading={priority ? undefined : loading}
                 draggable={draggable}
-                onLoad={() => setIsLoaded(true)}
-                onError={() => setIsLoaded(true)}
+                onLoad={markLoaded}
+                onError={markLoaded}
                 className={`${className} transition-opacity duration-300 ${
                     isLoaded ? "opacity-100" : "opacity-0"
                 }`}

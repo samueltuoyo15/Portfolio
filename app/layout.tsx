@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Caveat } from "next/font/google";
+import { Playfair_Display, Geist, Caveat } from "next/font/google";
 import "./globals.css";
 import siteMetadata from "@/utils/site.meta.data";
 
@@ -8,7 +8,7 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
 });
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -31,17 +31,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Samuel Tuoyo", url: siteMetadata.siteUrl }],
   creator: "Samuel Tuoyo",
   publisher: "Samuel Tuoyo",
-  category: "Software & Product Engineering",
+  category: "Software Engineering",
   keywords: [
     "Samuel Tuoyo",
     "Full Stack Engineer",
-    "Product Engineer",
     "Backend Engineer",
-    "Software Architect",
     "Next.js Developer",
     "NestJS",
     "TypeScript",
-    "SendLib",
+    "SendLiberty",
+    "Clud",
+    "Pulse RSS Reader",
     "Dokugen",
     "Happr",
     "Portfolio",
@@ -49,11 +49,10 @@ export const metadata: Metadata = {
     "Web Development",
   ],
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-32x32.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
   },
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
@@ -61,14 +60,7 @@ export const metadata: Metadata = {
     siteName: siteMetadata.title,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: `${siteMetadata.siteUrl}/android-chrome-512x512.png`,
-        width: 512,
-        height: 512,
-        alt: "Samuel Tuoyo - Full Stack & Product Engineer",
-      },
-    ],
+    images: [`${siteMetadata.siteUrl}/opengraph-image`],
   },
   robots: {
     index: true,
@@ -87,7 +79,7 @@ export const metadata: Metadata = {
     title: siteMetadata.title,
     description: siteMetadata.description,
     creator: "@TuoyoS26091",
-    images: [`${siteMetadata.siteUrl}/android-chrome-512x512.png`],
+    images: [`${siteMetadata.siteUrl}/opengraph-image`],
   },
   alternates: {
     canonical: siteMetadata.siteUrl,
@@ -101,7 +93,7 @@ const jsonLdGraph = {
       "@type": "WebSite",
       "@id": `${siteMetadata.siteUrl}/#website`,
       "url": siteMetadata.siteUrl,
-      "name": "Samuel Tuoyo | Full-Stack & Product Engineer",
+      "name": "Samuel Tuoyo | Full Stack Engineer",
       "description": siteMetadata.description,
       "publisher": {
         "@id": `${siteMetadata.siteUrl}/#person`,
@@ -109,11 +101,27 @@ const jsonLdGraph = {
       "inLanguage": "en-US",
     },
     {
+      "@type": "WebPage",
+      "@id": `${siteMetadata.siteUrl}/#webpage`,
+      "url": siteMetadata.siteUrl,
+      "name": siteMetadata.title,
+      "description": siteMetadata.description,
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": `${siteMetadata.siteUrl}/opengraph-image`,
+        "width": 1200,
+        "height": 630,
+      },
+      "isPartOf": {
+        "@id": `${siteMetadata.siteUrl}/#website`,
+      },
+    },
+    {
       "@type": "Person",
       "@id": `${siteMetadata.siteUrl}/#person`,
       "name": "Samuel Tuoyo",
       "url": siteMetadata.siteUrl,
-      "image": `${siteMetadata.siteUrl}/android-chrome-512x512.png`,
+      "image": `${siteMetadata.siteUrl}/IMG_0004.jpeg`,
       "sameAs": [
         siteMetadata.github,
         siteMetadata.linkedin,
@@ -121,13 +129,12 @@ const jsonLdGraph = {
         siteMetadata.youtube,
         "https://medium.com/@samueltuoyo9082",
       ],
-      "jobTitle": "Full Stack & Product Engineer",
+      "jobTitle": "Full Stack Engineer",
       "email": siteMetadata.email,
       "description": siteMetadata.description,
       "knowsAbout": [
         "Software Engineering",
         "Full Stack Engineering",
-        "Product Engineering",
         "Backend Engineering",
         "API Development",
         "Next.js",
@@ -169,26 +176,38 @@ const jsonLdGraph = {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "SendLib - Zero-Config Transactional Email API",
-          "url": "https://sendlib.samueltuoyo.com/",
+          "name": "Myhappr - Creator Support Platform",
+          "url": "https://myhappr.com/",
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "SaveIt - Fast Multi-Platform Video Downloader",
-          "url": "https://saveit.samueltuoyo.com/",
+          "name": "SendLiberty - Transactional Email API",
+          "url": "https://sendliberty.com/",
         },
         {
           "@type": "ListItem",
           "position": 3,
+          "name": "Clud - API Change Monitoring",
+          "url": "https://clud.samueltuoyo.com/",
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
           "name": "Dokugen - Open-Source AI README Generator CLI",
           "url": "https://dokugen.samueltuoyo.com/",
         },
         {
           "@type": "ListItem",
-          "position": 4,
-          "name": "Happr - Fintech Creator-Support Infrastructure",
-          "url": "https://myhappr.com/",
+          "position": 5,
+          "name": "SaveIt - Fast Multi-Platform Video Downloader",
+          "url": "https://saveit.samueltuoyo.com/",
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Pulse - Minimal RSS Feed Reader",
+          "url": "https://pulse.samueltuoyo.com/",
         },
       ],
     },
@@ -210,7 +229,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} ${caveat.variable} font-sans antialiased text-slate-900 bg-[#FAFAFA]`}
+        className={`${geist.variable} ${playfair.variable} ${caveat.variable} font-sans antialiased text-slate-900 bg-[#FAFAFA]`}
       >
         {children}
       </body>

@@ -9,6 +9,7 @@ import { AboutSection } from "./components/AboutSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { ToolsSection } from "./components/ToolsSection";
 
 export default function Home() {
   return (
@@ -19,11 +20,12 @@ export default function Home() {
         <Navbar />
         <HeroSection />
         <CreationsMarquee />
+        <AboutSection />
         <ProjectsSection />
+        <ToolsSection />
         <ArticlesMarquee />
         <LandingPagesSection />
         <ProcessSection />
-        <AboutSection />
         <ServicesSection />
         <ContactSection />
         <Footer />

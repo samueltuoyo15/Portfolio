@@ -1,305 +1,181 @@
 "use client";
 
-import { useState } from "react";
-import { Cpu, ExternalLink, X, BookOpen, AlertCircle, CheckCircle2, TrendingUp } from "lucide-react";
+import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { SkeletonImage } from "./SkeletonImage";
-
-interface ProjectDetails {
-    problem: string;
-    solution: string;
-    impact: string;
-}
+import { TechBadge } from "./TechBadge";
 
 interface Project {
     title: string;
-    role?: string;
-    desc: string;
+    kicker: string;
+    subtitle: string;
+    story: string;
     tech: string[];
-    color: string;
     link?: string;
     image: string;
-    details?: ProjectDetails;
+    imageAspectRatio: string;
 }
 
 const projects: Project[] = [
     {
-        title: "SendLib",
-        desc: "Zero-Config Transactional Email API Proxy for Developers.",
+        title: "Myhappr",
+        kicker: "01 · Founding Engineer",
+        subtitle: "Creator support and micro-tipping platform for African creators.",
+        story: "Most global platforms make it hard or impossible for African creators to receive support from fans abroad. With Myhappr, fans anywhere can send tips, and creators can withdraw the money directly into their local bank accounts in Nigeria and Ghana without extra fees. The platform has already processed more than ₦1 million in payments.",
+        tech: ["Flutterwave", "NestJS", "Prisma", "TypeScript"],
+        link: "https://myhappr.com/",
+        image: "/myhapprscr.png",
+        imageAspectRatio: "1920 / 1280",
+    },
+    {
+        title: "SendLiberty",
+        kicker: "02 · Creator",
+        subtitle: "Send app emails without buying or setting up a custom domain.",
+        story: "Many cloud hosts block normal email sending, while other services make you buy and verify a domain first. SendLiberty lets developers connect a Google account and start sending useful emails in minutes. It has already secured its first two paying users.",
         tech: ["Next.js", "Google OAuth", "MongoDB", "TypeScript"],
-        color: "bg-[#090d16]",
-        link: "https://sendlib.samueltuoyo.com/",
-        image: "/sendlib.png",
-        details: {
-            problem:
-                "Cloud hosts like Railway and Render block outbound SMTP ports, while platforms like Resend require strict domain DNS verification and have low free limits.",
-            solution:
-                "A zero-config REST API proxy that lets you send transactional emails (signup verifications, magic links, notifications) using your Gmail product account with no domain or DNS setup needed.",
-            impact:
-                "Sends transactional emails directly through your product's connected Google accounts via OAuth 2.0 (gmail.send scope). Up to 500 emails/day per connected account and 2,000/day per Workspace account, with REST API key management and 7-day analytics.",
-        },
+        link: "https://sendliberty.com/",
+        image: "/sendliberty.png",
+        imageAspectRatio: "1875 / 978",
     },
     {
-        title: "SaveIt",
-        desc: "Download videos from YouTube, TikTok, Instagram, Twitter, Reddit, Twitch & Vimeo in seconds.",
-        tech: ["Htmx", "Go", "Docker", "FFmpeg"],
-        color: "bg-[#7f1d1d]",
-        link: "https://saveit.samueltuoyo.com/",
-        image: "/everdownload.png",
-    },
-    {
-        title: "AR Object Scanner",
-        desc: "Browser-based AR object detection app overlaying YOLOv8 bounding boxes & labels in real time.",
-        tech: ["TypeScript", "Vite", "YOLOv8"],
-        color: "bg-[#0f172a]",
-        link: "https://ar-object-scanner.vercel.app/",
-        image: "/ar-object-scanner.png",
+        title: "Clud",
+        kicker: "03 · Creator",
+        subtitle: "Know when an API change could break your app.",
+        story: "Clud watches the connections between your software products. When a change could break an app or website, it warns your team in Slack or by email before customers run into problems.",
+        tech: ["OpenAPI", "Slack", "TypeScript", "Node.js"],
+        link: "https://clud.samueltuoyo.com/",
+        image: "/clud.png",
+        imageAspectRatio: "1920 / 1080",
     },
     {
         title: "Dokugen",
-        desc: "Open-Source AI README Generator powered by Google Gemini CLI.",
-        tech: ["Google Gemini", "CLI", "Typescript"],
-        color: "bg-[#1E1E1E]",
+        kicker: "04 · Open Source Creator",
+        subtitle: "A free tool that writes clear project documentation with AI.",
+        story: "Writing and updating project guides takes time, so it is often skipped. Dokugen studies a code project and creates clean READMEs, useful overviews, and visual system diagrams. More than 250 developers have used it to generate 2,700+ READMEs and almost 3,000 total results, and the project has earned more than 300 GitHub stars.",
+        tech: ["TypeScript", "Google Gemini", "Docker"],
         link: "https://dokugen.samueltuoyo.com/",
         image: "/Generate Readme - Language & Framework agnostic.png",
-        details: {
-            problem:
-                "Writing and maintaining README files is tedious and often skipped, leaving projects undocumented and hard to adopt.",
-            solution:
-                "An open-source CLI tool (npm & pip) that scans your codebase and generates a detailed, accurate README in seconds using Google Gemini. Supports any language or framework with zero config.",
-            impact:
-                "301 GitHub stars. Active users across 25+ pages on the leaderboard. Ships features including smart updates, AI commit messages, license generation, and system design diagram generation.",
-        },
+        imageAspectRatio: "1280 / 640",
     },
     {
-        title: "Myhappr",
-        role: "Co-Architect",
-        desc: "Fintech Creator-Support Infrastructure for African Creators.",
-        tech: ["Flutterwave", "NestJS", "Prisma"],
-        color: "bg-[#7C3AED]",
-        link: "https://myhappr.com/",
-        image: "/myhapprscr.png",
-        details: {
-            problem:
-                "African creators can't easily receive financial support from fans. Most global platforms don't support local African bank payouts.",
-            solution:
-                "A creator tip platform where fans pay globally (card, bank, M-Pesa) and creators withdraw directly to their local African bank account. Free plan keeps 100% of tips, settled via Flutterwave.",
-            impact:
-                "Live product, registered company (RC: 9481569). Real users sending and receiving support. Pro plan available at $2 with 0% supporter fees and creator analytics.",
-        },
+        title: "SaveIt",
+        kicker: "05 · Full Stack Engineer",
+        subtitle: "Fast video downloader for social media platforms.",
+        story: "Most video download sites are filled with broken popups and spammy ads. SaveIt is a clean, simple web app that downloads high-definition videos from YouTube, TikTok, Instagram, and Twitter in seconds.",
+        tech: ["Go", "FFmpeg", "Docker", "HTMX"],
+        link: "https://saveit.samueltuoyo.com/",
+        image: "/everdownload.png",
+        imageAspectRatio: "1919 / 1016",
+    },
+    {
+        title: "Pulse",
+        kicker: "06 · Open Source Creator",
+        subtitle: "A fast, distraction-free reader for all your news feeds.",
+        story: "Keeping up with the news usually means jumping between noisy websites and apps. Pulse brings stories from different sources into one clean, ad-free reader and loads them quickly, so people can spend more time reading and less time searching.",
+        tech: ["Go", "HTMX", "Docker", "RSS"],
+        link: "https://pulse.samueltuoyo.com/",
+        image: "/pulse.png",
+        imageAspectRatio: "1897 / 1080",
     },
 ];
 
 export const ProjectsSection = () => {
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
     return (
         <section id="innovations" className="w-full max-w-6xl px-4 mb-24">
             <div className="flex items-center gap-4 mb-12">
                 <h2 className="text-4xl md:text-6xl font-handwriting text-gray-500 -rotate-2">
-                    Projects
+                    Products I&apos;ve Built and Grown
                 </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {projects.map((project, i) => (
-                    <div
-                        key={i}
-                        className="group relative rounded-3xl overflow-hidden shadow-lg flex flex-col bg-white border border-gray-100 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                    >
-                        {/* Thumbnail container displaying edge-to-edge full image cover */}
-                        <div className="h-48 sm:h-60 md:h-64 w-full relative overflow-hidden bg-gray-900 border-b border-gray-100">
-                            <SkeletonImage
-                                src={project.image}
-                                alt={project.title}
-                                dark
-                                containerClassName="w-full h-full"
-                                className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-                        </div>
-
+            <div className="flex flex-col divide-y divide-gray-200/80">
+                {projects.map((project, i) => {
+                    const isEven = i % 2 === 1;
+                    return (
                         <div
-                            className={`p-5 sm:p-6 flex flex-col justify-between flex-1 ${project.color} text-white`}
+                            key={i}
+                            className="py-12 md:py-16 first:pt-2 last:pb-2 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center"
                         >
-                            <div className="mb-4 sm:mb-5">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="text-2xl font-bold font-serif">{project.title}</h3>
-                                    <div className="p-1.5 bg-white/10 rounded-full backdrop-blur-md">
-                                        <Cpu className="w-4 h-4 text-white" />
-                                    </div>
-                                </div>
-                                {project.role && (
-                                    <span className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/15 text-white/90 mb-3">
-                                        {project.role}
-                                    </span>
-                                )}
-                                <p className="text-sm text-white/90 leading-relaxed font-light">
-                                    {project.desc}
-                                </p>
-                            </div>
-
-                            <div className="space-y-4 pt-2">
-                                <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                                    <div className="flex flex-wrap gap-1.5 max-w-[55%]">
-                                        {project.tech.slice(0, 3).map((t) => (
-                                            <span
-                                                key={t}
-                                                className="px-2.5 py-0.5 bg-white/20 backdrop-blur rounded-full text-[10px] font-semibold tracking-wide"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <div className="flex items-center gap-3">
-                                        {project.details && (
-                                            <button
-                                                onClick={() => setSelectedProject(project)}
-                                                className="inline-flex items-center gap-1.5 bg-white text-gray-900 text-xs font-extrabold px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg transition transform hover:-translate-y-0.5"
-                                            >
-                                                <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-                                                Case Study
-                                            </button>
-                                        )}
-                                        {project.link && (
-                                            <a
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
-                                            >
-                                                View Live
-                                                <ExternalLink className="w-3.5 h-3.5" />
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Clean Portfolio-Themed Case Study Modal */}
-            {selectedProject && selectedProject.details && (
-                <div
-                    className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
-                    onClick={() => setSelectedProject(null)}
-                >
-                    <div
-                        className="bg-white text-gray-900 rounded-3xl max-w-3xl w-full max-h-[88vh] flex flex-col border border-gray-200 shadow-2xl overflow-hidden relative my-auto"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* Modal Header */}
-                        <div className="px-6 py-5 border-b border-gray-100 bg-white flex items-center justify-between shrink-0">
-                            <div>
-                                <div className="flex items-center gap-2 mb-1.5">
-                                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 border border-blue-100 px-3 py-0.5 rounded-full">
-                                        <BookOpen className="w-3 h-3" /> Case Study
-                                    </span>
-                                    {selectedProject.role && (
-                                        <span className="text-xs font-semibold text-gray-600 bg-gray-100 px-2.5 py-0.5 rounded-full">
-                                            {selectedProject.role}
-                                        </span>
-                                    )}
-                                </div>
-                                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 tracking-tight">
-                                    {selectedProject.title}
-                                </h2>
-                            </div>
-
-                            <button
-                                onClick={() => setSelectedProject(null)}
-                                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition"
-                                aria-label="Close modal"
+                            {/* Narrative Column */}
+                            <div
+                                className={`flex flex-col items-start text-left ${
+                                    isEven ? "lg:order-2" : "lg:order-1"
+                                }`}
                             >
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
+                                <span className="text-xs font-mono font-medium text-gray-400 uppercase tracking-widest mb-2">
+                                    {project.kicker}
+                                </span>
+                                <h3 className="font-sans text-3xl sm:text-4xl text-gray-900 font-semibold mb-3 tracking-tight">
+                                    {project.title}
+                                </h3>
+                                <p className="text-sm sm:text-base font-medium text-gray-700 leading-snug mb-3">
+                                    {project.subtitle}
+                                </p>
+                                <p className="text-sm font-light text-gray-600 leading-relaxed mb-6">
+                                    {project.story}
+                                </p>
 
-                        {/* Modal Body */}
-                        <div className="overflow-y-auto custom-scrollbar p-6 sm:p-8 space-y-6 flex-1 bg-[#FAFAFA]">
-                            {/* Browser Mockup Preview displaying full screenshot */}
-                            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-                                <div className="bg-gray-100 px-4 py-2.5 border-b border-gray-200 flex items-center gap-3">
-                                    <div className="flex gap-1.5">
-                                        <span className="w-3 h-3 rounded-full bg-red-400 inline-block" />
-                                        <span className="w-3 h-3 rounded-full bg-yellow-400 inline-block" />
-                                        <span className="w-3 h-3 rounded-full bg-green-400 inline-block" />
-                                    </div>
-                                    <div className="bg-white border border-gray-200 rounded-full px-3 py-1 text-[11px] text-gray-500 font-mono flex-1 text-center truncate">
-                                        {selectedProject.link || selectedProject.title.toLowerCase() + ".com"}
-                                    </div>
-                                </div>
-                                <div className="p-3 sm:p-4 bg-gray-50 flex items-center justify-center">
-                                    <SkeletonImage
-                                        src={selectedProject.image}
-                                        alt={selectedProject.title}
-                                        containerClassName="w-full max-h-80 rounded-lg shadow-sm"
-                                        className="w-full h-full max-h-80 object-contain object-top rounded-lg"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Case Study Breakdown */}
-                            <div className="space-y-4 text-sm">
-                                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-                                    <h3 className="font-bold text-amber-600 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
-                                        <AlertCircle className="w-4 h-4" /> The Problem
-                                    </h3>
-                                    <p className="leading-relaxed font-light text-gray-700">
-                                        {selectedProject.details.problem}
-                                    </p>
+                                {/* Tech Stack Badges */}
+                                <div className="flex flex-wrap gap-2 mb-6">
+                                    {project.tech.map((t) => (
+                                        <TechBadge key={t} name={t} />
+                                    ))}
                                 </div>
 
-                                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-                                    <h3 className="font-bold text-blue-600 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4" /> The Solution
-                                    </h3>
-                                    <p className="leading-relaxed font-light text-gray-700">
-                                        {selectedProject.details.solution}
-                                    </p>
-                                </div>
-
-                                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-                                    <h3 className="font-bold text-emerald-600 text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
-                                        <TrendingUp className="w-4 h-4" /> Measured Impact & Results
-                                    </h3>
-                                    <p className="leading-relaxed font-light text-gray-700">
-                                        {selectedProject.details.impact}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Modal Footer */}
-                        <div className="px-6 py-4 border-t border-gray-200 bg-white flex flex-wrap items-center justify-between gap-4 shrink-0">
-                            <div className="flex flex-wrap gap-2">
-                                {selectedProject.tech.map((t) => (
-                                    <span
-                                        key={t}
-                                        className="px-3 py-1 bg-gray-100 border border-gray-200 rounded-full text-xs font-semibold text-gray-700"
+                                {/* Action Button */}
+                                {project.link && (
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1.5 bg-[#5D5FEF] hover:bg-[#4E50E5] text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full transition transform hover:-translate-y-0.5"
                                     >
-                                        {t}
-                                    </span>
-                                ))}
+                                        Live site
+                                        <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} strokeWidth={2} />
+                                    </a>
+                                )}
                             </div>
 
-                            {selectedProject.link && (
-                                <a
-                                    href={selectedProject.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs px-6 py-2.5 rounded-full transition shadow-md hover:shadow-lg"
-                                >
-                                    View Live App
-                                    <ExternalLink className="w-4 h-4" />
-                                </a>
-                            )}
+                            {/* Browser Frame Preview Column */}
+                            <div
+                                className={`w-full ${
+                                    isEven ? "lg:order-1" : "lg:order-2"
+                                }`}
+                            >
+                                <div className="rounded-2xl overflow-hidden border border-gray-200/90 bg-white shadow-sm hover:shadow-md transition duration-300">
+                                    {/* Browser Chrome Header */}
+                                    <div className="bg-[#F3F4F6] px-4 py-2.5 border-b border-gray-200 flex items-center gap-3">
+                                        <div className="flex gap-1.5">
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
+                                        </div>
+                                        <div className="bg-white border border-gray-200/80 rounded-md px-3 py-1 text-[11px] text-gray-500 font-mono flex-1 text-center truncate">
+                                            {project.link
+                                                ? project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")
+                                                : project.title.toLowerCase() + ".com"}
+                                        </div>
+                                    </div>
+
+                                    {/* Edge-to-Edge Screenshot */}
+                                    <div
+                                        className="relative w-full overflow-hidden bg-gray-50"
+                                        style={{ aspectRatio: project.imageAspectRatio }}
+                                    >
+                                        <SkeletonImage
+                                            src={project.image}
+                                            alt={project.title}
+                                            containerClassName="w-full h-full"
+                                            className="block w-full h-full object-cover object-top hover:scale-[1.01] transition duration-500"
+                                            sizes="(max-width: 1024px) calc(100vw - 32px), 550px"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    );
+                })}
+            </div>
         </section>
     );
 };

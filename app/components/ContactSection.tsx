@@ -1,4 +1,5 @@
-import { Rocket } from "lucide-react";
+import { Rocket01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 export const ContactSection = () => {
     return (
@@ -18,16 +19,17 @@ export const ContactSection = () => {
                     <p className="text-gray-400 mb-8 max-w-lg mx-auto">
                         I&apos;m a{" "}
                         <span className="text-white font-semibold">
-                            Full Stack & Product Engineer
+                            Full Stack Engineer
                         </span>
-                        , let&apos;s build something robust, secure, and scalable for your
-                        business. Currently available for new projects and roles.
+                        , let&apos;s build software that helps your business earn more,
+                        serve customers better, and save time. I&apos;m currently available
+                        for new projects and roles.
                     </p>
                     <a
                         href="mailto:hello@samueltuoyo.com"
                         className="inline-flex items-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-full hover:scale-105 transition"
                     >
-                        Let&apos;s Talk <Rocket className="w-5 h-5" />
+                        Let&apos;s Talk <HugeiconsIcon icon={Rocket01Icon} size={20} strokeWidth={1.8} />
                     </a>
                 </div>
             </div>

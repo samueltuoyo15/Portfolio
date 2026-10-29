@@ -27,9 +27,12 @@ export const Navbar = () => {
                 <a href="#" className="hidden md:flex items-center gap-3 group shrink-0 min-w-0">
                     <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-200 relative group-hover:scale-105 transition duration-300 shrink-0">
                         <Image
-                            src="/avatar.jpg"
+                            src="/IMG_0004.jpeg"
                             alt="Samuel Tuoyo"
                             fill
+                            sizes="36px"
+                            quality={90}
+                            priority
                             className="object-cover"
                         />
                     </div>
@@ -69,7 +72,7 @@ export const Navbar = () => {
                             className="hover:scale-110 transition-transform"
                         />
                         <SocialIcon
-                            url="https://medium.com/@samueltuoyo9082"
+                            url="https://medium.com/@samueltuoyo"
                             target="_blank"
                             style={{ height: 32, width: 32 }}
                             className="hover:scale-110 transition-transform"

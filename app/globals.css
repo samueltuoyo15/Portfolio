@@ -17,7 +17,7 @@ body {
   background-color: #FAFAFA;
   color: #171717;
   font-family: var(--font-sans, sans-serif);
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 

@@ -1,11 +1,12 @@
-import { FileText, Cpu, Server, ShieldCheck, Rocket } from "lucide-react";
+import { CpuIcon, File02Icon, Rocket01Icon, SecurityCheckIcon, ServerStack02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { TypewriterText } from "./TypewriterText";
 
 export const ProcessSection = () => {
     return (
         <section id="process" className="w-full max-w-4xl px-4 mb-32">
             <div className="flex items-center gap-3 mb-10">
-                <FileText className="w-8 h-8 text-gray-700" />
+                <HugeiconsIcon icon={File02Icon} size={32} strokeWidth={1.6} className="text-gray-700" />
                 <h2 className="font-serif text-3xl md:text-4xl text-gray-900 min-h-[1.2em]">
                     <TypewriterText text="My Recipe For Success..." />
                 </h2>
@@ -14,24 +15,24 @@ export const ProcessSection = () => {
             <div className="space-y-8">
                 {[
                     {
-                        title: "Understand the requirements",
-                        desc: "I start by researching the complete scope. If it's a frontend feature, I research how it connects to the backend and overall architecture to fully understand the core domain logic before writing any code.",
-                        icon: <Cpu className="w-6 h-6 text-gray-700" />,
+                        title: "Understand the real goal",
+                        desc: "I start by learning what the business and its customers actually need. That keeps us focused on work that can increase sales, save time, or improve the customer experience.",
+                        icon: <HugeiconsIcon icon={CpuIcon} size={24} strokeWidth={1.7} className="text-gray-700" />,
                     },
                     {
-                        title: "Architect Scalable Systems",
-                        desc: "Architecture is much more than just databases. I design robust systems by mapping out sequence flows, flowcharts, and system diagrams (often using Mermaid) to build a highly scalable architecture.",
-                        icon: <Server className="w-6 h-6 text-gray-700" />,
+                        title: "Plan before I build",
+                        desc: "I map out how the product should work, where problems may appear, and what needs to grow later. A clear plan reduces costly mistakes and makes delivery smoother.",
+                        icon: <HugeiconsIcon icon={ServerStack02Icon} size={24} strokeWidth={1.7} className="text-gray-700" />,
                     },
                     {
-                        title: "Secure & Optimize",
-                        desc: "Implementing rate limiting, proper security headers (CORS, Helmet, CSP), input validation, and query optimization to lock things down tight.",
-                        icon: <ShieldCheck className="w-6 h-6 text-gray-700" />,
+                        title: "Make it safe and fast",
+                        desc: "I protect customer data, test important journeys, and remove slow points so the product feels dependable from day one.",
+                        icon: <HugeiconsIcon icon={SecurityCheckIcon} size={24} strokeWidth={1.7} className="text-gray-700" />,
                     },
                     {
-                        title: "Deploy & Observability",
-                        desc: "Dockerizing applications if neccessary, setting up CI/CD pipelines, and monitoring for real-time insights.",
-                        icon: <Rocket className="w-6 h-6 text-gray-700" />,
+                        title: "Launch and keep watch",
+                        desc: "I put the product live, watch how it performs, and fix issues early so customers can keep using it without disruption.",
+                        icon: <HugeiconsIcon icon={Rocket01Icon} size={24} strokeWidth={1.7} className="text-gray-700" />,
                     },
                 ].map((step, i) => (
                     <div key={i} className="flex gap-6 group">

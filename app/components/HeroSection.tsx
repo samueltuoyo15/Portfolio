@@ -1,7 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { Hand, Briefcase, FolderOpen, Rocket, GitMerge, Star, User, Send, FileText } from "lucide-react";
+import {
+    Briefcase06Icon,
+    File02Icon,
+    FolderOpenIcon,
+    GitMergeIcon,
+    Rocket01Icon,
+    SentIcon,
+    StarIcon,
+    UserIcon,
+    WavingHand01Icon,
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import siteMetadata from "@/utils/site.meta.data";
 
 export const HeroSection = () => {
     const scrollToSection = (id: string) => {
@@ -36,72 +48,73 @@ export const HeroSection = () => {
                 <div className="w-full flex justify-between items-start mb-4">
                     <div className="relative w-16 h-16 rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:scale-105 transition duration-300">
                         <Image
-                            src="/avatar.jpg"
+                            src="/IMG_0004.jpeg"
                             alt="Samuel Avatar"
                             fill
+                            sizes="64px"
+                            quality={90}
+                            priority
                             className="object-cover"
                         />
                     </div>
 
                     <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                         <a
-                            href="/resume.pdf"
-                            download="Samuel_Tuoyo_Resume.pdf"
+                            href={siteMetadata.resume}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1 sm:gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full border border-gray-200 shadow-sm transition transform hover:-translate-y-0.5 whitespace-nowrap"
                         >
-                            <FileText className="w-3 h-3 text-gray-700 shrink-0" /> RESUME
+                            <HugeiconsIcon icon={File02Icon} size={12} strokeWidth={2} className="text-gray-700 shrink-0" /> VIEW RESUME
                         </a>
                         <a
                             href="mailto:hello@samueltuoyo.com"
                             className="flex items-center gap-1 sm:gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 whitespace-nowrap"
                         >
-                            <Send className="w-3 h-3 shrink-0" /> CONTACT ME
+                            <HugeiconsIcon icon={SentIcon} size={12} strokeWidth={2} className="shrink-0" /> CONTACT ME
                         </a>
                     </div>
                 </div>
 
                 <h1 className="font-serif text-3xl md:text-4xl text-gray-900 mb-1 tracking-tight flex items-center gap-2">
-                    Hey! <Hand className="animate-wave origin-bottom-right inline-block" />, I’m Samuel
+                    Hey! <HugeiconsIcon icon={WavingHand01Icon} size={30} strokeWidth={1.6} className="animate-wave origin-bottom-right inline-block" />, I’m Samuel
                 </h1>
 
                 <div className="flex items-center gap-2 text-gray-500 font-medium mb-4 text-sm">
-                    <Briefcase className="w-4 h-4" />
-                    Full Stack & Product Engineer
+                    <HugeiconsIcon icon={Briefcase06Icon} size={16} strokeWidth={1.7} />
+                    Full Stack Engineer
                 </div>
 
                 <p className="max-w-xl text-base text-gray-600 mb-6 leading-normal font-light">
-                    Full Stack & Product Engineer based in{" "}
-                    <strong className="text-gray-800">Nigeria</strong>, I build
-                    high-performance web applications, scalable backend systems, and APIs for businesses and tech startups globally.
+                    Passionate about helping companies make more money through software. Whether that means
+                    launching products, improving customer experiences, or automating costly work.
                 </p>
 
                 <div className="flex flex-wrap gap-2 w-full">
                     {[
                         {
                             label: "PROJECTS",
-                            icon: <FolderOpen className="w-3 h-3" />,
+                            icon: <HugeiconsIcon icon={FolderOpenIcon} size={12} strokeWidth={2} />,
                             id: "innovations",
                         },
                         {
                             label: "LANDING PAGES",
-                            icon: <Rocket className="w-3 h-3" />,
+                            icon: <HugeiconsIcon icon={Rocket01Icon} size={12} strokeWidth={2} />,
                             id: "landing-pages",
                         },
                         {
                             label: "MY PROCESS",
-                            icon: <GitMerge className="w-3 h-3" />,
+                            icon: <HugeiconsIcon icon={GitMergeIcon} size={12} strokeWidth={2} />,
                             id: "process",
                         },
                         {
                             label: "SKILLS",
-                            icon: <Star className="w-3 h-3" />,
+                            icon: <HugeiconsIcon icon={StarIcon} size={12} strokeWidth={2} />,
                             id: "skills",
                         },
                         {
                             label: "ABOUT ME",
-                            icon: <User className="w-3 h-3" />,
+                            icon: <HugeiconsIcon icon={UserIcon} size={12} strokeWidth={2} />,
                             id: "about",
                         },
                     ].map((btn, idx) => (
