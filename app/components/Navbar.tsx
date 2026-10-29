@@ -50,7 +50,7 @@ export const Navbar = () => {
                             className="hover:scale-110 transition-transform"
                         />
                         <SocialIcon
-                            url="https://wa.me/2349161591177?text=Hi%20Samuel%2C%20I%20saw%20your%20portfolio%20and%20I%20want%20you%20to%20build%20a%20website%20for%20my%20business.%20Let%27s%20talk!"
+                            url="https://wa.me/2349161591177?text=Hi%20Samuel%2C%20I%20saw%20your%20portfolio.%20Let%27s%20talk."
                             network="whatsapp"
                             target="_blank"
                             style={{ height: 32, width: 32 }}
