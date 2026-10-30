@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SiTypescript } from "react-icons/si";
 import { TypewriterText } from "./TypewriterText";
 
 export const AboutSection = () => {
@@ -39,6 +40,12 @@ export const AboutSection = () => {
                                     quality={90}
                                     className="object-cover object-top"
                                 />
+                                <div
+                                    className="absolute top-[13%] left-1/2 -translate-x-1/2 -rotate-6 z-10 flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-2xl bg-white shadow-lg transition-transform hover:scale-105 select-none overflow-hidden"
+                                    aria-label="TypeScript badge"
+                                >
+                                    <SiTypescript className="h-full w-full text-[#3178C6]" />
+                                </div>
                             </div>
                             <p className="text-center font-handwriting mt-2 text-gray-400 text-sm">
                                 Samuel T.
